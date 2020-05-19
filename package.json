@@ -1,0 +1,39 @@
+{
+  "name": "bingo",
+  "version": "1.0.0",
+  "description": "a thing that generates bingo sheets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashdalfTheGray/bingo.git"
+  },
+  "keywords": [
+    "bingo"
+  ],
+  "author": "Yash Kulshrestha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YashdalfTheGray/bingo/issues"
+  },
+  "homepage": "https://github.com/YashdalfTheGray/bingo#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.4",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2",
+    "typescript-eslint": "0.0.1-alpha.0"
+  }
+}
