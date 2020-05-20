@@ -1,9 +1,17 @@
 import { resolve } from 'path';
 
-import express from 'express';
 import * as chalk from 'chalk';
+import express, {
+  NextFunction,
+  Request,
+  RequestHandler,
+  Response,
+} from 'express';
 
 const port = process.env.PORT || process.argv[2] || 8080;
+const wrap = (fn: RequestHandler) => (
+  ...args: [Request, Response, NextFunction]
+) => fn(...args).catch(args[2]);
 
 const app = express();
 
