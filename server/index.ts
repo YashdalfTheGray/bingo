@@ -23,6 +23,12 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(resolve('public')));
 
+apiRouter.get('/', (req, res) => {
+  res.json({
+    status: 'okay',
+  });
+});
+
 app.use('/api', apiRouter);
 
 app.listen(port, () =>
