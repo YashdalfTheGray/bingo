@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 
 import bodyParser from 'body-parser';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import express, {
   NextFunction,
   Request,

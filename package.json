@@ -4,7 +4,8 @@
   "description": "a thing that generates bingo sheets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "ts-node server/index.ts",
+    "start": "npm run start:dev"
   },
   "repository": {
     "type": "git",
