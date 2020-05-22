@@ -10,4 +10,24 @@ const generateArrayOfNumbers = (
   max: number
 ): number[] => new Array(length).fill(0).map(() => getRandomNumber(min, max));
 
-export { getRandomNumber, dedupe, generateArrayOfNumbers };
+const generateSingleColumn = (start: number, end: number): number[] => {
+  let generated = dedupe(generateArrayOfNumbers(5, start, end));
+
+  while (generated.length != 5) {
+    const extraNumbersToGenerate = 5 - generated.length;
+    console.log(`Found ${extraNumbersToGenerate} duplicates in the the array`);
+    generated = dedupe([
+      ...generated,
+      ...generateArrayOfNumbers(extraNumbersToGenerate, start, end),
+    ]);
+  }
+
+  return generated;
+};
+
+export {
+  getRandomNumber,
+  dedupe,
+  generateArrayOfNumbers,
+  generateSingleColumn,
+};
