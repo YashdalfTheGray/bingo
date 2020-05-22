@@ -10,6 +10,8 @@ import express, {
 } from 'express';
 import morgan from 'morgan';
 
+import bingoRouter from './middleware/bingo';
+
 const port = process.env.PORT || process.argv[2] || 8080;
 const wrap = (fn: RequestHandler) => (
   ...args: [Request, Response, NextFunction]
@@ -20,10 +22,11 @@ const app = express();
 const apiRouter = express.Router();
 
 app.use(bodyParser.json());
-app.use(morgan('dev'));
+app.use(morgan('common'));
 app.use(express.static(resolve('public')));
 
-apiRouter.get('/', (req, res) => {
+apiRouter.use('/bingo', bingoRouter);
+apiRouter.get('/', (_, res) => {
   res.json({
     status: 'okay',
   });
