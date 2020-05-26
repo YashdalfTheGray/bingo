@@ -46,6 +46,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@types/node": "^14.0.1",
     "@types/webpack": "^4.41.13",
     "@types/webpack-dev-middleware": "^3.7.1",
