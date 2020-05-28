@@ -4,7 +4,7 @@
   "description": "a thing that generates bingo sheets",
   "main": "index.js",
   "scripts": {
-    "clean:assets": "npx rimraf public/**/*.js public/**/*.js.map public/**/*.css",
+    "clean:assets": "npx rimraf public/**/*.{js,map,css,json} public/artifacts",
     "clean:server": "npx rimraf dist/",
     "clean:all": "npm run clean:assets && npm run clean:server",
     "preassets:prod": "npm run clean:assets",
