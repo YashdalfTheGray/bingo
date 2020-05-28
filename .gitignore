@@ -1,3 +1,9 @@
+### Project specific ###
+public/**/*.css
+public/**/*.js
+public/**/*.map
+public/artifacts
+
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
 # Created by https://www.gitignore.io/api/visualstudiocode,macos,linux,node,vim
@@ -190,4 +196,3 @@ tags
 # End of https://www.gitignore.io/api/visualstudiocode,macos,linux,node,vim
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
-
