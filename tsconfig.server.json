@@ -2,9 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist/",
+    "module": "commonjs",
     "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "lib": ["ESNext"]
   },
   "include": ["server/**/*"],
   "exclude": ["app/**/*"]

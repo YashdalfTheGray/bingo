@@ -2,8 +2,6 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "esnext",
-    "module": "commonjs",
-    "lib": ["ESNext"],
     "moduleResolution": "node",
     "isolatedModules": false,
     "jsx": "react",
@@ -18,7 +16,9 @@
     "removeComments": false,
     "noLib": false,
     "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
