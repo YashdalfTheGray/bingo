@@ -9,20 +9,9 @@ import express, {
   Response,
 } from 'express';
 import morgan from 'morgan';
-import webpack from 'webpack';
-
-type WebpackConfigFunction = (
-  env: any,
-  args: webpack.CliConfigOptions
-) => webpack.Configuration;
-
-const webpackConfigFunction: WebpackConfigFunction = require('../webpack.config.js');
 
 import bingoRouter from './middleware/bingo';
-
-type WebpackModeType = 'none' | 'development' | 'production';
-const mode: WebpackModeType = process.env.NODE_ENV as WebpackModeType;
-(webpackConfigFunction as webpack.Configuration).mode = mode;
+import hotModuleReloadingSetup from './utils/hmr';
 
 const port = process.env.PORT || process.argv[2] || 8080;
 const wrap = (fn: RequestHandler) => (
@@ -31,15 +20,7 @@ const wrap = (fn: RequestHandler) => (
 
 const app = express();
 
-const webpackConfig = webpackConfigFunction(null, { mode });
-const compiler = webpack(webpackConfig);
-app.use(
-  require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output!.publicPath,
-  })
-);
-app.use(require('webpack-hot-middleware')(compiler));
+hotModuleReloadingSetup(app);
 
 const apiRouter = express.Router();
 
