@@ -1,5 +1,6 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -10,17 +11,31 @@ const isDev = (mode) => mode === 'development';
 const isProd = (mode) => mode === 'production';
 
 module.exports = (_, argv) => ({
-  entry: ['./src/index.ts', './src/index.scss'],
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/index.ts',
+    './src/index.scss',
+  ],
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './public'),
     filename: '[name].js',
   },
+  mode: argv.mode,
+  devtool: isDev(argv.mode) ? 'source-map' : 'cheap-source-map',
   module: {
     rules: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.client.json',
+            },
+          },
+        ],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -66,6 +81,8 @@ module.exports = (_, argv) => ({
     new Visualizer({
       filename: './artifacts/stats.html',
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
   stats: {
     colors: true,
