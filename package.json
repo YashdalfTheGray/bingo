@@ -19,7 +19,10 @@
     "start:dev": "concurrently -c cyan,green \"npm:assets:watch\" \"npm:server:dev\"",
     "start": "npm run start:dev",
     "autoprefixer-info": "npx autoprefixer --info",
-    "show-stats": "npx open ./dist/artifacts/stats.html"
+    "show-stats": "npx open ./dist/artifacts/stats.html",
+    "test": "nyc ava",
+    "test:no-coverage": "ava",
+    "open-coverage": "npx open coverage/index.html"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,38 @@
     "*.{js,jsx,ts,tsx,json,css,md}": [
       "prettier --write"
     ]
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "common/**/*.ts",
+      "server/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts",
+      "common/**/*.spec.ts",
+      "server/**/*.spec.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "dependencies": {
     "@types/body-parser": "^1.19.0",
@@ -78,6 +113,7 @@
     "lint-staged": "^10.2.6",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
+    "nyc": "^15.0.1",
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.5",
     "regenerator-runtime": "^0.13.5",

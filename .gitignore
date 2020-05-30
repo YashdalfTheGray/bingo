@@ -2,6 +2,7 @@
 public/**/*.css
 public/**/*.js
 public/**/*.map
+public/**/*.json
 public/artifacts
 
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
