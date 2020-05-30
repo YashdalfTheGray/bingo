@@ -6,6 +6,6 @@ export default class App extends Component {
   }
 
   public render() {
-    return '<h1>This is the app</h1>';
+    return '<h1>This is the bingo app</h1>';
   }
 }
