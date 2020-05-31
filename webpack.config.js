@@ -67,6 +67,11 @@ module.exports = (_, argv) => ({
     ],
   },
   resolve: {
+    alias: {
+      '@bingo/common': path.resolve(__dirname, './common'),
+      '@bingo/components': path.resolve(__dirname, './client/components'),
+      '@bingo/client': path.resolve(__dirname, './client'),
+    },
     extensions: ['.ts', '.js', '.css'],
   },
   plugins: [

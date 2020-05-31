@@ -18,7 +18,13 @@
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@bingo/common/*": ["common/*"],
+      "@bingo/components/*": ["client/components/*"],
+      "@bingo/client/*": ["client/*"]
+    }
   },
   "compileOnSave": false,
   "buildOnSave": false,
