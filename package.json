@@ -57,12 +57,12 @@
   },
   "nyc": {
     "include": [
-      "src/**/*.ts",
+      "client/**/*.ts",
       "common/**/*.ts",
       "server/**/*.ts"
     ],
     "exclude": [
-      "src/**/*.spec.ts",
+      "client/**/*.spec.ts",
       "common/**/*.spec.ts",
       "server/**/*.spec.ts"
     ],

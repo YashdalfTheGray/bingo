@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*"],
+  "include": ["client/**/*"],
   "exclude": ["server/**/*"],
   "compilerOptions": {
     "lib": ["DOM", "ESNext"]

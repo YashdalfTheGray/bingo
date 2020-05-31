@@ -13,8 +13,8 @@ const isProd = (mode) => mode === 'production';
 module.exports = (_, argv) => ({
   entry: [
     'webpack-hot-middleware/client',
-    './src/index.ts',
-    './src/index.scss',
+    './client/index.ts',
+    './client/index.scss',
   ],
   output: {
     path: path.resolve(__dirname, './public'),
