@@ -1,0 +1,56 @@
+/* mixins */
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+/* general styles */
+body {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+
+.h-list * + * {
+  margin-left: 8px;
+}
+
+.v-list * + * {
+  margin-top: 8px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item-static {
+  flex: 0 1 auto;
+}
+
+.flex-item-dynamic {
+  flex: 1 1 auto;
+}
