@@ -1,5 +1,8 @@
 import Component from './Component';
 
+import Header from '@bingo/components/Header';
+import Footer from '@bingo/components/Footer';
+
 export default class App extends Component {
   constructor() {
     super('App');
@@ -8,11 +11,11 @@ export default class App extends Component {
   public render() {
     return `
       <div class="flex-column">
-        <div>This</div>
+        ${new Header().render()}
         <div>is</div>
         <div>a</div>
         <div>test</div>
-        <div>layout</div>
+        ${new Footer().render()}
       </div>
     `;
   }
