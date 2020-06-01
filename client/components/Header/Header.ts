@@ -9,8 +9,8 @@ export default class Header extends Component {
 
   public render() {
     return `
-      <div class="app-header flex-row">
-        <div>This is the header</div>
+      <div class="bingo-header flex-row">
+        <div class="title">BINGO</div>
       </div>
     `;
   }
