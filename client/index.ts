@@ -1,4 +1,4 @@
-import App from './App';
+import App from '@bingo/client/App';
 import './index.scss';
 
 document.querySelector('#app-root')!.innerHTML = new App().render();

@@ -24,6 +24,11 @@
 }
 
 /* general styles */
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   margin: 0px;
@@ -53,4 +58,12 @@ body {
 
 .flex-item-dynamic {
   flex: 1 1 auto;
+}
+
+.flex-item-expand {
+  flex: 1 0 auto;
+}
+
+.expand-to-fill-container {
+  height: 100%;
 }
