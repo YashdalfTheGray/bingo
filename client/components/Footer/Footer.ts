@@ -9,11 +9,12 @@ export default class Footer extends Component {
 
   public render() {
     return `
-    <div class="footer flex-row">
+    <div class="footer flex-row flex-item-static">
       <p>
         Designed and developed in the open by
-        &nbsp;<a href="">Yash</a>. The code can be found
-        &nbsp;<a href="">here</a>.
+        &nbsp;<a href="https://yashdalfthegray.github.io/" target="blank">Yash</a>.
+        &nbsp;The code can be found
+        &nbsp;<a href="https://github.com/YashdalfTheGray/bingo" target="blank">here</a>.
       </p>
     </div>
     `;
