@@ -3,6 +3,6 @@
   "include": ["client/**/*"],
   "exclude": ["server/**/*"],
   "compilerOptions": {
-    "lib": ["DOM", "ESNext"]
+    "lib": ["DOM", "ESNext", "DOM.Iterable"]
   }
 }
