@@ -17,4 +17,8 @@ export default class Component {
   public render(props?: object): string {
     return '';
   }
+
+  protected callClassFunction(name: string) {
+    return `document.componentRegistry[${this.id}].${name}()`;
+  }
 }
