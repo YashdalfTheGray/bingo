@@ -8,8 +8,7 @@ interface IContentState {
   queryParams: { [k: string]: string };
 }
 
-export default class Content extends Component {
-  private state: IContentState;
+export default class Content extends Component<{}, IContentState> {
   constructor() {
     super('Content');
 
