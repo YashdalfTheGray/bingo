@@ -9,7 +9,7 @@ interface IDocumentWithRegistry extends Document {
 (document as IDocumentWithRegistry).nextId = 0;
 
 export default class Component<P = {}, S = {}> {
-  protected id: string;
+  protected readonly id: string;
   protected state: S;
   protected props: P;
 
@@ -31,6 +31,6 @@ export default class Component<P = {}, S = {}> {
   }
 
   protected callClassFunction(name: string) {
-    return `document.componentRegistry[${this.id}].${name}()`;
+    return `document.componentRegistry['${this.id}'].${name}()`;
   }
 }
