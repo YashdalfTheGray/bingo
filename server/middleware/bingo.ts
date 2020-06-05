@@ -31,7 +31,7 @@ bingoRouter.get('/one', (_, res) => {
   ];
 
   res.json({
-    card: [...encodeColumns(columns), hashColumns(columns)].join('-'),
+    card: [hashColumns(columns), ...encodeColumns(columns)].join('-'),
   });
 });
 
