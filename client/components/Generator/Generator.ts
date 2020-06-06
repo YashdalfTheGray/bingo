@@ -1,6 +1,12 @@
 import Component from '@bingo/client/Component';
 
-export default class Generator extends Component {
+import './generator.scss';
+
+interface IGeneratorState {
+  cards: string[];
+}
+
+export default class Generator extends Component<{}, IGeneratorState> {
   constructor() {
     super('Generator');
   }
