@@ -10,7 +10,7 @@ export default class Header extends Component {
   public render() {
     return `
       <div class="bingo-header flex-row flex-item-static">
-        <div class="title">BINGO</div>
+        <div class="title">B&nbsp;I&nbsp;N&nbsp;G&nbsp;O</div>
       </div>
     `;
   }
