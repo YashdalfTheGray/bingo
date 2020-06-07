@@ -3,4 +3,20 @@ $easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
 .generator {
   justify-content: center;
   align-items: center;
+
+  input#card-number-input {
+    border: 1px solid transparent;
+    border-bottom: 1px solid #000;
+    transition: border-color 0.5s $easeOutCirc;
+
+    &:focus {
+      outline: none;
+      border-color: #000;
+      border-radius: 2px;
+    }
+  }
+
+  button#generate-button {
+    margin-left: 16px;
+  }
 }
