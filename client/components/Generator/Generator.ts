@@ -49,9 +49,18 @@ export default class Generator extends Component<{}, IGeneratorState> {
 
   public render() {
     return `
-      <div class="generator">
-        <input type="number" />
-        <button>Generate</button>
+      <div class="generator flex-column">
+        <div class="flex-row">
+          <input id="card-number-input" type="number" placeholder="A number, e.g. 5"/>
+          <button
+            id="generate-button"
+            onClick="${this.callClassFunction('generateCards')}">
+            Generate
+          </button>
+        </div>
+        <div id="card-links-container" class="flex-column">
+          <p>Enter a number above and click generate to generate bingo card links.</p>
+        </div>
       </div>
     `;
   }
