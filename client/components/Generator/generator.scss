@@ -23,4 +23,12 @@ $easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
   button#generate-button {
     margin-left: 16px;
   }
+
+  #card-links-container {
+    margin-top: 16px;
+
+    * + * {
+      margin-top: 8px;
+    }
+  }
 }
