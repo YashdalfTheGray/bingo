@@ -121,6 +121,7 @@
     "prettier": "^2.0.5",
     "regenerator-runtime": "^0.13.5",
     "sass-loader": "^8.0.2",
+    "svg-inline-loader": "^0.8.2",
     "ts-loader": "^7.0.5",
     "ts-node": "^8.10.1",
     "tslint": "^6.1.2",
