@@ -8,9 +8,7 @@ interface ICardProps {
 
 export default class Card extends Component<ICardProps> {
   constructor(props: ICardProps) {
-    super('Card');
-
-    this.props = props;
+    super('Card', props);
   }
 
   public render() {

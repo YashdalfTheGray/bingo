@@ -10,8 +10,8 @@ interface IDocumentWithRegistry extends Document {
 
 export default class Component<P = {}, S = {}> {
   protected readonly id: string;
+  protected readonly props: P;
   protected state: S;
-  protected props: P;
 
   constructor(type: string = 'Component', props?: P) {
     this.id = `${type}${++(document as IDocumentWithRegistry).nextId}`;
@@ -22,7 +22,7 @@ export default class Component<P = {}, S = {}> {
     }
   }
 
-  public render(props?: object): string {
+  public render(): string {
     return '';
   }
 
