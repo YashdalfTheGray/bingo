@@ -30,7 +30,20 @@ export default class Component<P = {}, S = {}> {
     this.state = merge({}, this.state, newState);
   }
 
-  protected callClassFunction(name: string) {
-    return `document.componentRegistry['${this.id}'].${name}()`;
+  protected callClassFunction(
+    name: string,
+    ...args: (string | number | boolean)[]
+  ) {
+    const argsString = args
+      .map((a) => {
+        if (typeof a === 'string') {
+          return `'${a}'`;
+        } else {
+          return a.toString();
+        }
+      })
+      .join(', ');
+
+    return `document.componentRegistry['${this.id}'].${name}(${argsString})`;
   }
 }
