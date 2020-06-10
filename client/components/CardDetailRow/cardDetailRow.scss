@@ -1,0 +1,27 @@
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+.card-detail-row {
+  justify-content: space-between;
+  align-items: center;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+
+    & svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  .done-icon {
+    opacity: 0;
+    transition: opacity 1s $easeOutCirc;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+}
