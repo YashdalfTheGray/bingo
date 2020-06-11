@@ -1,10 +1,13 @@
 import Component from '@bingo/client/Component';
 import { getOneCard } from '@bingo/client/service';
+import type { IBingoCard } from '@bingo/client/types';
+
+import CardDetailRow from '@bingo/components/CardDetailRow';
 
 import './generator.scss';
 
 interface IGeneratorState {
-  cards: string[];
+  cards: IBingoCard[];
 }
 
 export default class Generator extends Component<{}, IGeneratorState> {
@@ -42,7 +45,11 @@ export default class Generator extends Component<{}, IGeneratorState> {
             hash = card.split('-')[0];
           }
 
-          return `${l}?card=${card}`;
+          return {
+            link: `${l}?card=${card}`,
+            hash: card.split('-')[0],
+            content: card,
+          };
         })
     );
 
@@ -50,7 +57,9 @@ export default class Generator extends Component<{}, IGeneratorState> {
 
     document.querySelector(
       '#card-links-container'
-    )!.innerHTML = this.state.cards.map((c) => `<p>${c}</p>`).join('');
+    )!.innerHTML = this.state.cards
+      .map((c) => new CardDetailRow({ card: c }).render())
+      .join('');
   }
 
   public handleInputChanged() {
@@ -67,7 +76,7 @@ export default class Generator extends Component<{}, IGeneratorState> {
 
   public render() {
     return `
-      <div class="generator flex-column">
+      <div class="generator flex-column flex-item-dynamic">
         <div class="flex-row">
           <input
             id="card-number-input"
@@ -82,14 +91,16 @@ export default class Generator extends Component<{}, IGeneratorState> {
           </button>
         </div>
         <div id="card-links-container" class="flex-column">
-          <p>Enter a number above and click generate to generate bingo card links.</p>
+          <div class="empty-message">
+            Enter a number above and click generate to generate bingo card links.
+          </div>
         </div>
       </div>
     `;
   }
 
   private isUniqueCard = (hash: string) =>
-    !this.state.cards.map((c) => c.split('-')[0]).includes(hash);
+    !this.state.cards.map((c) => c.hash).includes(hash);
 
   private validateCardNumber = (val: number) => !!val && val > 0;
 }
