@@ -12,19 +12,23 @@ export default class Card extends Component<ICardProps> {
   }
 
   public render() {
-    const { card } = this.props;
-    const [hash, ...cols] = card.split('-');
-    const colsToDisplay = decodeColumns(cols);
+    try {
+      const { card } = this.props;
+      const [hash, ...cols] = card.split('-');
+      const colsToDisplay = decodeColumns(cols);
 
-    if (hashColumns(colsToDisplay) !== hash) {
+      if (hashColumns(colsToDisplay) !== hash) {
+        throw new Error('Card hash mismatch');
+      }
+
+      return `
+        <div class="flex-row">
+          ${colsToDisplay.map((r) => this.renderRow(r)).join('&nbsp;')}
+        </div>
+      `;
+    } catch (err) {
       return '<div>Invalid card numbers! Please check the link.</div>';
     }
-
-    return `
-      <div class="flex-row">
-        ${colsToDisplay.map((r) => this.renderRow(r)).join('&nbsp;')}
-      </div>
-    `;
   }
 
   private renderRow = (nums: number[]) =>
