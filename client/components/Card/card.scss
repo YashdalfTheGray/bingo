@@ -1,0 +1,9 @@
+.card {
+  &.grid-container {
+    display: grid;
+    grid: repeat(5, minmax(64px, 1fr)) / repeat(5, minmax(64px, 1fr));
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+  }
+}
