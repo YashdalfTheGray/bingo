@@ -26,7 +26,18 @@ export default class Card extends Component<ICardProps> {
       return `
         <div class="card grid-container">
           ${colsToDisplay
-            .map((c) => c.map((e) => `<span>${e}</span>`).join('\n'))
+            .map((c, i) =>
+              c
+                .map(
+                  (e, j) =>
+                    `<span
+                      class="number-container"
+                      data-grid-order="${i + j}"
+                      data-row="${j + 1}"
+                      data-column="${i + 1}">${e === 0 ? '' : e}</span>`
+                )
+                .join('\n')
+            )
             .join('\n')}
         </div>
       `;
