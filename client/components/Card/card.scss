@@ -21,7 +21,9 @@ $minimum-size: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
 
     &[data-column='5'] {
       border-right: solid $border-weight #000;
