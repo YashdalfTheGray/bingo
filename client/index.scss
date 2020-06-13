@@ -87,3 +87,8 @@ body {
     fill: #fff;
   }
 }
+
+/* iOS fixes */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
