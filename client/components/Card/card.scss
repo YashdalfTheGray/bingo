@@ -1,5 +1,5 @@
-$border-weight: 1px;
-$minimum-size: 80px;
+$border-weight: 2px;
+$minimum-size: 72px;
 
 .card {
   &.grid-container {
@@ -31,6 +31,25 @@ $minimum-size: 80px;
 
     &[data-row='5'] {
       border-bottom: solid $border-weight #000;
+    }
+
+    .number-cross {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      background: transparent;
+      width: 100%;
+      height: 100%;
+
+      svg {
+        fill-opacity: 0;
+      }
+
+      &.visible {
+        svg {
+          fill-opacity: 0.5;
+        }
+      }
     }
   }
 }
