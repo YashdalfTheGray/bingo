@@ -3,6 +3,7 @@ import Component from '@bingo/client/Component';
 import Header from '@bingo/components/Header';
 import Footer from '@bingo/components/Footer';
 import Content from '@bingo/components/Content';
+import ClipboardHelper from './components/ClipboardHelper';
 
 export default class App extends Component {
   constructor() {
@@ -15,6 +16,7 @@ export default class App extends Component {
         ${new Header().render()}
         ${new Content().render()}
         ${new Footer().render()}
+        ${new ClipboardHelper().render()}
       </div>
     `;
   }
