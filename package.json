@@ -12,7 +12,7 @@
     "preserver:prod": "npm run clean:server",
     "server:prod": "tsc --outDir dist --project tsconfig.server.json",
     "prestart:prod": "npm run server:prod && npm run assets:prod",
-    "start:prod": "NODE_ENV=production node dist/index.js",
+    "start:prod": "NODE_ENV=production node dist/server/index.js",
     "assets:dev": "webpack --mode=development",
     "assets:watch": "webpack --mode=development --watch",
     "server:dev": "NODE_ENV=development ts-node --project tsconfig.server.json server/index.ts",

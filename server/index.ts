@@ -20,7 +20,9 @@ const wrap = (fn: RequestHandler) => (
 
 const app = express();
 
-hotModuleReloadingSetup(app);
+if (process.env.NODE_ENV === 'development') {
+  hotModuleReloadingSetup(app);
+}
 
 const apiRouter = express.Router();
 
@@ -38,5 +40,6 @@ apiRouter.get('/', (_, res) => {
 app.use('/api', apiRouter);
 
 app.listen(port, () =>
+  // tslint:disable-next-line
   console.log(`Server running on port ${chalk.green(port)}`)
 );

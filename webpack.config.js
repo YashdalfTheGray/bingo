@@ -12,7 +12,7 @@ const isProd = (mode) => mode === 'production';
 
 module.exports = (_, argv) => ({
   entry: [
-    'webpack-hot-middleware/client',
+    ...(isDev(argv.mode) ? ['webpack-hot-middleware/client'] : []),
     './client/index.ts',
     './client/index.scss',
   ],
@@ -90,6 +90,9 @@ module.exports = (_, argv) => ({
     }),
     new Visualizer({
       filename: './artifacts/stats.html',
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: argv.mode,
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
