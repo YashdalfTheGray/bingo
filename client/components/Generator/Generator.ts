@@ -24,6 +24,8 @@ export default class Generator extends Component<{}, IGeneratorState> {
       '#card-number-input'
     );
 
+    this.handleInputChanged();
+
     const numberOfCards = parseInt(numberInput!.value, 10);
 
     if (!this.validateCardNumber(numberOfCards)) {
