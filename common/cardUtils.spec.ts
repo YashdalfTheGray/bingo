@@ -15,3 +15,17 @@ test('encodeColumns encodes all the columns of numbers', (t) => {
     ])
   );
 });
+
+test('decodeOneColumn converts a single string into a column', (t) => {
+  t.deepEqual([1, 2, 3, 4, 5], cardUtils.decodeOneColumn('614dc45'));
+});
+
+test('decodeColumns converts strings back to columns', (t) => {
+  t.deepEqual(
+    [
+      [1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10],
+    ],
+    cardUtils.decodeColumns(['614dc45', '242f51ce'])
+  );
+});
