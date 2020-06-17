@@ -6,7 +6,6 @@ const getRandomNumber = (min: number, max: number): number => {
 
 const dedupe = <T>(arr: T[]): T[] => [...new Set(arr)];
 
-// TODO YashdalfTheGray 2020/05/30 - validate input
 const generateArrayOfNumbers = (length: number, min: number, max: number) =>
   validate(
     (
@@ -27,7 +26,6 @@ const generateArrayOfNumbers = (length: number, min: number, max: number) =>
     max
   );
 
-// TODO YashdalfTheGray 2020/05/30 - validate input
 const generateSingleColumn = (
   start: number,
   end: number,
