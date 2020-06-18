@@ -48,6 +48,7 @@ $minimum-size: 72px;
       animation: animateIn 350ms;
       animation-fill-mode: both;
       animation-timing-function: ease-in-out;
+      animation-delay: calc(var(--animation-order) * 75ms);
     }
 
     .number-cross {

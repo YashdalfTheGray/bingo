@@ -47,7 +47,6 @@ export default class Card extends Component<ICardProps> {
                   (e, row) =>
                     `<span
                       class="number-container"
-                      data-grid-order="${col + row}"
                       data-row="${row + 1}"
                       data-column="${col + 1}"
                       onClick="${this.callClassFunction(
@@ -56,7 +55,8 @@ export default class Card extends Component<ICardProps> {
                         col + 1
                       )}">
                         <span
-                          class="number">
+                          class="number"
+                          style="--animation-order: ${col + row};">
                           ${e === 0 ? '' : e}
                         </span>
                         <span class="number-cross">${close}</span>
