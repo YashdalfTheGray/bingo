@@ -44,6 +44,12 @@ $minimum-size: 72px;
       border-bottom: solid $border-weight #000;
     }
 
+    .number {
+      animation: animateIn 350ms;
+      animation-fill-mode: both;
+      animation-timing-function: ease-in-out;
+    }
+
     .number-cross {
       position: absolute;
       left: 0px;

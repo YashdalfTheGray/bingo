@@ -55,7 +55,10 @@ export default class Card extends Component<ICardProps> {
                         row + 1,
                         col + 1
                       )}">
-                        <span>${e === 0 ? '' : e}</span>
+                        <span
+                          class="number">
+                          ${e === 0 ? '' : e}
+                        </span>
                         <span class="number-cross">${close}</span>
                       </span>`
                 )
