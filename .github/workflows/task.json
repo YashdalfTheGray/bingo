@@ -1,16 +1,25 @@
 {
-  "family": "ln",
+  "family": "bingo",
   "containerDefinitions": [
     {
       "name": "website",
       "essential": true,
       "portMappings": [
         {
-          "containerPort": 80,
-          "hostPort": 8080
+          "containerPort": 8080,
+          "hostPort": 80
         }
-      ]
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/bingo",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
     }
   ],
-  "memory": "100"
+  "memory": "512",
+  "cpu": "512"
 }
