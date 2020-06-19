@@ -29,3 +29,13 @@ test('decodeColumns converts strings back to columns', (t) => {
     cardUtils.decodeColumns(['614dc45', '242f51ce'])
   );
 });
+
+test('hashColumns returns a short hash for all colums', (t) => {
+  t.is(
+    cardUtils.hashColumns([
+      [1, 2, 3],
+      [4, 5, 6],
+    ]),
+    '9d7b7fbd'
+  );
+});
