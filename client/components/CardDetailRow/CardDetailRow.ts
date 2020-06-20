@@ -34,7 +34,9 @@ export default class CardDetailRow extends Component<ICardDetailRowProps> {
     return `
     <div class="flex-row card-detail-row" data-card-hash="${card.hash}">
       <span class="card-number">
-        Card #${parseInt(card.hash, 16).toString(10)}
+        <a href="${card.link}" target="_blank">
+          Card #${parseInt(card.hash, 16).toString(10)}
+        </a>
       </span>
       <span class="card-actions flex-row">
         <button
