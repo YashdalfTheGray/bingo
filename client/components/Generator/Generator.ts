@@ -94,7 +94,7 @@ export default class Generator extends Component<{}, IGeneratorState> {
         </div>
         <div id="card-links-container" class="flex-column">
           <div class="empty-message">
-            Enter a number above and click generate to generate bingo card links.
+            Enter the number of players and click generate to generate bingo card links.
           </div>
         </div>
       </div>
