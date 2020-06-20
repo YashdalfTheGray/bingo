@@ -4,6 +4,14 @@ $easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
   justify-content: space-between;
   align-items: center;
 
+  .card-number {
+    & a {
+      color: #000;
+      text-decoration: unset;
+      border-bottom: dashed 0.5px #000;
+    }
+  }
+
   .icon {
     display: flex;
     justify-content: center;
