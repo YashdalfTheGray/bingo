@@ -20,4 +20,8 @@ This app comes with a Docker container in the code. This means that you can run 
 
 ## Code structure
 
-This application uses Typscript everywhere.
+This application uses Typscript everywhere. The server uses Express.js and related tooling while the client code is transpiled using Babel, Typescript and SASS but does not use a frontend framework, rather it further extends a template string based component approach used [in this repository](https://github.com/YashdalfTheGray/yashdalfthegray.github.io).
+
+The development build does use hot reloading for both Javascript/Typescript and CSS but it is not stateful as you might expect from something like hot loading built specifically for React.
+
+The server code is stored in the `server` folder and the client code is stored in the `client` folder. There are some common modules that are stored in a `common` folder. We use a path alias to import components into files, for example, `import CardDetailRow from '@bingo/components/CardDetailRow`. Similar path aliases exist for the common folder (`@bingo/common`) and the client folder (`@bingo/client`).
