@@ -34,6 +34,8 @@ export default class Card extends Component<ICardProps> {
       const [hash, ...cols] = card.split('-');
       const colsToDisplay = decodeColumns(cols);
 
+      const bingoHeader = ['B', 'I', 'N', 'G', 'O'];
+
       if (hashColumns(colsToDisplay) !== hash) {
         throw new Error('Card hash mismatch');
       }
@@ -42,16 +44,18 @@ export default class Card extends Component<ICardProps> {
         <div class="card grid-container">
           ${colsToDisplay
             .map((c, col) =>
-              c
+              [bingoHeader[col], ...c]
                 .map(
                   (e, row) =>
                     `<span
-                      class="number-container"
-                      data-row="${row + 1}"
+                      class="number-container${
+                        typeof e === 'string' ? ' is-header' : ''
+                      }"
+                      data-row="${row}"
                       data-column="${col + 1}"
                       onClick="${this.callClassFunction(
                         'handleNumberClick',
-                        row + 1,
+                        row,
                         col + 1
                       )}">
                         <span
@@ -59,7 +63,11 @@ export default class Card extends Component<ICardProps> {
                           style="--animation-order: ${col + row};">
                           ${e === 0 ? '' : e}
                         </span>
-                        <span class="number-cross">${close}</span>
+                        ${
+                          row !== 0
+                            ? `<span class="number-cross">${close}</span>`
+                            : ''
+                        }
                       </span>`
                 )
                 .join('\n')
