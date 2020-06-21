@@ -35,6 +35,15 @@ $minimum-size: 72px;
       font-weight: bold;
       position: relative;
 
+      &.is-header {
+        border: unset;
+        font-weight: normal;
+      }
+
+      &.is-header[data-column='5'] {
+        border-right: unset;
+      }
+
       &[data-column='5'] {
         border-right: solid $border-weight #000;
       }

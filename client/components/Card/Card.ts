@@ -16,6 +16,10 @@ export default class Card extends Component<ICardProps> {
   }
 
   public handleNumberClick(row: number, column: number) {
+    if (row === 0) {
+      return;
+    }
+
     const visibleClassName = 'visible';
     const cross = document.querySelector(
       `.number-container[data-row="${row}"][data-column="${column}"] > .number-cross`
