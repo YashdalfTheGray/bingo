@@ -15,57 +15,57 @@ $minimum-size: 72px;
 .card {
   &.grid-container {
     display: grid;
-    grid: repeat(5, minmax($minimum-size, 1fr)) / repeat(
+    grid: repeat(6, minmax($minimum-size, 1fr)) / repeat(
         5,
         minmax($minimum-size, 1fr)
       );
     grid-auto-flow: column;
     justify-items: center;
     align-items: center;
-  }
 
-  .number-container {
-    border-top: solid $border-weight #000;
-    border-left: solid $border-weight #000;
-    justify-self: stretch;
-    align-self: stretch;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    position: relative;
+    .number-container {
+      border-top: solid $border-weight #000;
+      border-left: solid $border-weight #000;
+      justify-self: stretch;
+      align-self: stretch;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      font-weight: bold;
+      position: relative;
 
-    &[data-column='5'] {
-      border-right: solid $border-weight #000;
-    }
-
-    &[data-row='5'] {
-      border-bottom: solid $border-weight #000;
-    }
-
-    .number {
-      animation: animateIn 350ms;
-      animation-fill-mode: both;
-      animation-timing-function: ease-in-out;
-      animation-delay: calc(var(--animation-order) * 75ms);
-    }
-
-    .number-cross {
-      position: absolute;
-      left: 0px;
-      right: 0px;
-      background: transparent;
-      width: 100%;
-      height: 100%;
-
-      svg {
-        fill-opacity: 0;
+      &[data-column='5'] {
+        border-right: solid $border-weight #000;
       }
 
-      &.visible {
+      &[data-row='6'] {
+        border-bottom: solid $border-weight #000;
+      }
+
+      .number {
+        animation: animateIn 350ms;
+        animation-fill-mode: both;
+        animation-timing-function: ease-in-out;
+        animation-delay: calc(var(--animation-order) * 75ms);
+      }
+
+      .number-cross {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+
         svg {
-          fill-opacity: 0.5;
+          fill-opacity: 0;
+        }
+
+        &.visible {
+          svg {
+            fill-opacity: 0.5;
+          }
         }
       }
     }
