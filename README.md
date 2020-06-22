@@ -20,6 +20,10 @@ Once you get a link for a card, it will decode the card numbers from the query s
 
 This app comes with a Docker container in the code. This means that you can run this application anywhere you could run a Docker container. The Github CI action deploys it to AWS Elastic Container Service but those files can easily be removed or modified to change the deployment target.
 
+You will need to create a cluster with some capacity (or just use AWS Fargate). Once the Github action runs the first time, it will fail to update the service (it looks for a service called `bingo-service` in a cluster called `bingo`) but will publish the task definition. You can then use the task definition to create a service and the action will properly update it going forward.
+
+Alternatively, you can spin up a service called `bingo-service` with another task definition (the AWS Fargate first run sample app, perhaps) to check that everything works in terms of infrastructure and then let Github actions update the service to the right task definition.
+
 ## Code structure
 
 This application uses Typscript everywhere. The server uses Express.js and related tooling while the client code is transpiled using Babel, Typescript and SASS but does not use a frontend framework, rather it further extends a template string based component approach used [in this repository](https://github.com/YashdalfTheGray/yashdalfthegray.github.io).
