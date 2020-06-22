@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/YashdalfTheGray/bingo/workflows/Deploy%20to%20Amazon%20ECS/badge.svg)](https://github.com/YashdalfTheGray/bingo/actions)
+
 # bingo
 
 A thing that just generates bingo sheets
