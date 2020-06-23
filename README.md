@@ -31,3 +31,13 @@ This application uses Typscript everywhere. The server uses Express.js and relat
 The development build does use hot reloading for both Javascript/Typescript and CSS but it is not stateful as you might expect from something like hot loading built specifically for React.
 
 The server code is stored in the `server` folder and the client code is stored in the `client` folder. There are some common modules that are stored in a `common` folder. We use a path alias to import components into files, for example, `import CardDetailRow from '@bingo/components/CardDetailRow`. Similar path aliases exist for the common folder (`@bingo/common`) and the client folder (`@bingo/client`).
+
+## Useful NPM commands
+
+The code in this repository comes with large number of npm scripts listed in the `package.json` file. To help bring some clarity, some of the most used commands are listed below.
+
+- `npm start` - used to start the server and webpack in development mode (HMR enabled)
+- `npm test` - used to run the unit tests, once
+- `npm run tslint` - used to lint the entire project
+- `npm run show-stats` - used to pull up the webpack statistics on package size and contents
+- `npm run start:prod` - used to start the server and webpack in production mode (HMR disabled)
