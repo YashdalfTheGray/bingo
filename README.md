@@ -41,3 +41,23 @@ The code in this repository comes with large number of npm scripts listed in the
 - `npm run tslint` - used to lint the entire project
 - `npm run show-stats` - used to pull up the webpack statistics on package size and contents
 - `npm run start:prod` - used to start the server and webpack in production mode (HMR disabled)
+
+## NPM Command tree
+
+The command trees below are mostly included so that it is easy to trace through the commands that are running when you run a specific command.
+
+```
+npm start
+|--npm run start:dev
+  |--npm run assets:dev
+  |--npm run server:dev
+
+npm start:prod
+|--npm run prestart:prod
+  |--npm run assets:prod
+    |--npm run preassets:prod
+      |--npm run clean:assets
+  |--npm run server:prod
+    |--npm run preserver:prod
+      |--npm run clean:server
+```
