@@ -27,9 +27,11 @@ for (let i = 0; i < 10000; i++) {
 
 ## The data
 
-The initial results are relatively inconsistent in generation of 10,000 numbers across a range of 1 through 100. They are similarly inconsistent with a smaller range, 1 through 10.
-
 ```typescript
-console.log(results);
+console.log(results); // for range 1 through 10
 // [ 0, 571, 1140, 1079, 1112, 1048, 1122, 1142, 1082, 1101, 603 ]
 ```
+
+## The analysis
+
+The initial results are relatively inconsistent in generation of 10,000 numbers across a range of 1 through 100. They are similarly inconsistent with a smaller range, 1 through 10.
