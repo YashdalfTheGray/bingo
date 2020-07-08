@@ -13,15 +13,18 @@ Pretty simple experiment here. Generate 10,000 numbers between 1 and 100 and see
 ### The generation code
 
 ```typescript
-const results = [];
+const minRange = 0;
+const maxRange = 11;
+
+const results: number[] = new Array(maxRange + 1).fill(0);
 
 const getRandomNumber = (min: number, max: number): number => {
   return Math.round(Math.random() * (max - min) + min);
 };
 
 for (let i = 0; i < 10000; i++) {
-  const number = getRandomNumber(0, 100);
-  results[number] = results[number] ? results[number]++ : 1;
+  const num = getRandomNumber(minRange, maxRange);
+  results[num] += 1;
 }
 ```
 
