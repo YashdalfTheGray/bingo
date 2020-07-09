@@ -4,6 +4,7 @@ public/**/*.js
 public/**/*.map
 public/**/*.json
 public/artifacts
+docs/output.html
 
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 

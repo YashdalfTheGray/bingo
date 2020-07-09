@@ -1,3 +1,12 @@
+import * as fs from 'fs';
+import { promisify } from 'util';
+
+const writeFileAsync = promisify(fs.writeFile);
+
+import * as jsdom from 'jsdom';
+
+const doc = new jsdom.JSDOM('<!DOCTYPE html>');
+
 const minRange = 1;
 const maxRange = 10;
 
@@ -12,5 +21,28 @@ for (let i = 0; i < 100000; i++) {
   results[num] += 1;
 }
 
-// tslint:disable-next-line no-console
+const resultsCode = doc.window.document.createElement('pre');
+resultsCode.innerHTML = JSON.stringify(
+  results.reduce(
+    (acc, v, i) => ({
+      ...acc,
+      [i]: v,
+    }),
+    {}
+  ),
+  null,
+  2
+);
+doc.window.document.body.appendChild(resultsCode);
+
+// tslint:disable no-console
 console.log(results);
+// tslint:enable no-console
+
+(async () => {
+  try {
+    writeFileAsync('docs/output.html', doc.serialize(), 'utf-8');
+  } catch (err) {
+    console.error(err); // tslint:disable-line no-console
+  }
+})();
