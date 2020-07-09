@@ -38,3 +38,38 @@ console.log(results); // for range 1 through 10
 ## The analysis
 
 The initial results are relatively inconsistent in generation of 10,000 numbers across a range of 1 through 100. They are similarly inconsistent with a smaller range, 1 through 10.
+
+### The bar chart generation code
+
+```typescript
+import * as fs from 'fs';
+import { promisify } from 'util';
+
+import * as jsdom from 'jsdom';
+
+const writeFileAsync = promisify(fs.writeFile);
+
+const doc = new jsdom.JSDOM('<!DOCTYPE html>');
+
+const resultsCode = doc.window.document.createElement('pre');
+resultsCode.innerHTML = JSON.stringify(
+  results.reduce(
+    (acc, v, i) => ({
+      ...acc,
+      [i]: v,
+    }),
+    {}
+  ),
+  null,
+  2
+);
+doc.window.document.body.appendChild(resultsCode);
+
+(async () => {
+  try {
+    writeFileAsync('docs/output.html', doc.serialize(), 'utf-8');
+  } catch (err) {
+    console.error(err); // tslint:disable-line no-console
+  }
+})();
+```
