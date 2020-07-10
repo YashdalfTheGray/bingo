@@ -28,3 +28,33 @@ function buildParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
 
   return parent;
 }
+
+function buildColumn(
+  dom: jsdom.JSDOM,
+  value: number,
+  max: number
+): HTMLElement {
+  const outerStyles = [
+    'height: 200px;',
+    'width: 50px;',
+    'position: relative;',
+  ].join(' ');
+
+  const innerStyles = [
+    'width: 100%;',
+    'background-color: #1E88E5;',
+    `height: ${Math.round(value / max) * 100}%;`,
+    'position: absolute;',
+    'bottom: 0;',
+  ].join(' ');
+
+  const outer = dom.window.document.createElement('div');
+  outer.style.cssText = outerStyles;
+
+  const inner = dom.window.document.createElement('div');
+  inner.style.cssText = innerStyles;
+
+  outer.appendChild(inner);
+
+  return outer;
+}
