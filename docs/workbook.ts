@@ -5,7 +5,7 @@ const writeFileAsync = promisify(fs.writeFile);
 
 import * as jsdom from 'jsdom';
 
-const doc = new jsdom.JSDOM('<!DOCTYPE html>');
+const chart = new jsdom.JSDOM('<!DOCTYPE html>');
 
 const minRange = 1;
 const maxRange = 10;
@@ -21,7 +21,7 @@ for (let i = 0; i < 100000; i++) {
   results[num] += 1;
 }
 
-const resultsCode = doc.window.document.createElement('pre');
+const resultsCode = chart.window.document.createElement('pre');
 resultsCode.innerHTML = JSON.stringify(
   results.reduce(
     (acc, v, i) => ({
@@ -33,7 +33,7 @@ resultsCode.innerHTML = JSON.stringify(
   null,
   2
 );
-doc.window.document.body.appendChild(resultsCode);
+chart.window.document.body.appendChild(resultsCode);
 
 // tslint:disable no-console
 console.log(results);
@@ -41,7 +41,7 @@ console.log(results);
 
 (async () => {
   try {
-    writeFileAsync('docs/output.html', doc.serialize(), 'utf-8');
+    writeFileAsync('docs/output.html', chart.serialize(), 'utf-8');
   } catch (err) {
     console.error(err); // tslint:disable-line no-console
   }
