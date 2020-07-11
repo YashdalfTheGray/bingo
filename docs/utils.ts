@@ -1,10 +1,17 @@
 import * as jsdom from 'jsdom';
 
-export function buildChart(data: { [key: string]: number }): string {
+export function buildChart(data: number[]): string {
   const chart = new jsdom.JSDOM('<!DOCTYPE html>');
 
   chart.window.document.body.appendChild(
     buildParent(chart, Object.keys(data).length)
+  );
+
+  const max = data.reduce((acc, v) => (acc > v ? v : acc));
+  data.forEach((val) =>
+    chart.window.document
+      .querySelector('#chart-parent')
+      ?.appendChild(buildColumn(chart, val, max))
   );
 
   return chart.serialize();
