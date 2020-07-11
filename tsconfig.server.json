@@ -7,5 +7,5 @@
     "lib": ["ESNext"]
   },
   "include": ["server/**/*"],
-  "exclude": ["client/**/*"]
+  "exclude": ["client/**/*", "docs/**/*"]
 }
