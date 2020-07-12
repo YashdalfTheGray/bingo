@@ -1,4 +1,12 @@
+import * as fs from 'fs';
+import { promisify } from 'util';
+
 import * as jsdom from 'jsdom';
+
+export async function writeChartFile(filename: string, chart: jsdom.JSDOM) {
+  const writeFileAsync = promisify(fs.writeFile);
+  return writeFileAsync(filename, chart.serialize(), 'utf-8');
+}
 
 export function buildChart(data: number[]): jsdom.JSDOM {
   const chart = new jsdom.JSDOM('<!DOCTYPE html>');
