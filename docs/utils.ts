@@ -1,6 +1,6 @@
 import * as jsdom from 'jsdom';
 
-export function buildChart(data: number[]): string {
+export function buildChart(data: number[]): jsdom.JSDOM {
   const chart = new jsdom.JSDOM('<!DOCTYPE html>');
 
   chart.window.document.body.appendChild(
@@ -14,7 +14,7 @@ export function buildChart(data: number[]): string {
       ?.appendChild(buildColumn(chart, val, max))
   );
 
-  return chart.serialize();
+  return chart;
 }
 
 function buildParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
