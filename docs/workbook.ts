@@ -1,17 +1,25 @@
-const minRange = 1;
-const maxRange = 10;
+import { writeChartFile, buildChart } from './utils';
 
-const results: number[] = new Array(maxRange + 1).fill(0);
+(async () => {
+  const minRange = 1;
+  const maxRange = 10;
 
-const getRandomNumber = (min: number, max: number): number => {
-  return Math.round(Math.random() * (max - min) + min);
-};
+  const results: number[] = new Array(maxRange + 1).fill(0);
 
-for (let i = 0; i < 100000; i++) {
-  const num = getRandomNumber(minRange, maxRange);
-  results[num] += 1;
-}
+  const getRandomNumber = (min: number, max: number): number => {
+    return Math.round(Math.random() * (max - min) + min);
+  };
 
-// tslint:disable no-console
-console.log(results);
-// tslint:enable no-console
+  for (let i = 0; i < 100000; i++) {
+    const num = getRandomNumber(minRange, maxRange);
+    results[num] += 1;
+  }
+
+  const chart = buildChart(results);
+
+  // tslint:disable no-console
+  console.log(results);
+  // tslint:enable no-console
+
+  await writeChartFile('docs/output.html', chart);
+})();
