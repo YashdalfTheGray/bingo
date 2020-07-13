@@ -19,7 +19,7 @@
     "start:dev": "concurrently -c cyan,green \"npm:assets:watch\" \"npm:server:dev\"",
     "start:docker": "NODE_ENV=production node dist/server/index.js",
     "start": "npm run start:dev",
-    "tslint": "tslint 'common/**/*.ts' 'client/**/*.ts' 'server/**/*.ts'",
+    "tslint": "tslint 'common/**/*.ts' 'client/**/*.ts' 'server/**/*.ts' 'docs/*.ts'",
     "autoprefixer-info": "npx autoprefixer --info",
     "show-stats": "npx open ./dist/artifacts/stats.html",
     "test": "nyc ava",
