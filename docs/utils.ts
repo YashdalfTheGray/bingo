@@ -15,11 +15,11 @@ export function buildChart(data: number[]): jsdom.JSDOM {
     buildParent(chart, Object.keys(data).length)
   );
 
-  const max = data.reduce((acc, v) => (acc > v ? v : acc));
+  const max = data.reduce((acc, v) => (acc < v ? v : acc));
   data.forEach((val) =>
     chart.window.document
-      .querySelector('#chart-parent')
-      ?.appendChild(buildColumn(chart, val, max))
+      .querySelector('#chart-parent')!
+      .appendChild(buildColumn(chart, val, max))
   );
 
   return chart;
