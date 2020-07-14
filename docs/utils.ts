@@ -30,10 +30,7 @@ function buildParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
     'display: grid;',
     `grid-template-columns: repeat(${datapoints}, auto);`,
     'justify-content: start;',
-    'grid-column-gap: 10px;',
     'border-left: solid 1px rgba(0,0,0,0.5);',
-    'border-bottom: solid 1px rgba(0,0,0,0.5);',
-    'padding-left: 10px;',
     `width: ${60 * datapoints}px;`,
   ].join(' ');
 
@@ -53,6 +50,7 @@ function buildColumn(
     'height: 200px;',
     'width: 50px;',
     'position: relative;',
+    'border-bottom: solid 1px rgba(0,0,0,0.5);',
   ].join(' ');
 
   const innerStyles = [
