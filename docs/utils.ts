@@ -48,15 +48,16 @@ function buildColumn(
 ): HTMLElement {
   const outerStyles = [
     'height: 200px;',
-    'width: 50px;',
+    'width: 60px;',
+    'padding: 0px 5px;',
     'position: relative;',
     'border-bottom: solid 1px rgba(0,0,0,0.5);',
   ].join(' ');
 
   const innerStyles = [
-    'width: 100%;',
+    'width: 50px;',
     'background-color: #1E88E5;',
-    `height: ${Math.round(value / max) * 100}%;`,
+    `height: ${Math.round((value / max) * 100)}%;`,
     'position: absolute;',
     'bottom: 0;',
   ].join(' ');
