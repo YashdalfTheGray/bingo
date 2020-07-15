@@ -52,7 +52,7 @@ function buildColumnWithLabel(
   const columnWithLabel = dom.window.document.createElement('div');
   columnWithLabel.style.cssText = [
     'display: flex;',
-    'flex-direction: column-reverse;',
+    'flex-direction: column;',
     'align-items: center;',
     'justify-content: flex-start',
   ].join(' ');
@@ -72,7 +72,7 @@ function buildColumn(
 ): HTMLElement {
   const outerStyles = [
     'height: 200px;',
-    'width: 60px;',
+    'width: 50px;',
     'padding: 0px 5px;',
     'position: relative;',
     'border-bottom: solid 1px rgba(0,0,0,0.5);',
