@@ -16,10 +16,10 @@ export function buildChart(data: number[]): jsdom.JSDOM {
   );
 
   const max = data.reduce((acc, v) => (acc < v ? v : acc));
-  data.forEach((val) =>
+  data.forEach((val, index) =>
     chart.window.document
       .querySelector('#chart-parent')!
-      .appendChild(buildColumn(chart, val, max))
+      .appendChild(buildColumnWithLabel(chart, index, val, max))
   );
 
   return chart;
