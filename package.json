@@ -24,7 +24,8 @@
     "show-stats": "npx open ./dist/artifacts/stats.html",
     "test": "nyc ava",
     "test:no-coverage": "ava",
-    "open-coverage": "npx open coverage/index.html"
+    "open-coverage": "npx open coverage/index.html",
+    "prettier": "prettier --write"
   },
   "repository": {
     "type": "git",
