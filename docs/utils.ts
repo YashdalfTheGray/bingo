@@ -30,7 +30,6 @@ function buildChartParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
     'display: grid;',
     `grid-template-columns: repeat(${datapoints}, auto);`,
     'justify-content: start;',
-    'border-left: solid 1px rgba(0,0,0,0.5);',
     `width: ${60 * datapoints}px;`,
   ].join(' ');
 
