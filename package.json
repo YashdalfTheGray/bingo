@@ -25,6 +25,7 @@
     "test": "nyc ava",
     "test:no-coverage": "ava",
     "open-coverage": "npx open coverage/index.html",
+    "open-workbook-result": "npx open docs/output.html",
     "prettier": "prettier --write"
   },
   "repository": {
