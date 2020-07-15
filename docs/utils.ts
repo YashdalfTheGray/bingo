@@ -22,6 +22,8 @@ export function buildChart(data: number[]): jsdom.JSDOM {
       .appendChild(buildColumnWithLabel(chart, index, val, max))
   );
 
+  chart.window.document.body.appendChild(buildRawDataSection(chart, data));
+
   return chart;
 }
 
@@ -94,4 +96,21 @@ function buildColumn(
   outer.appendChild(inner);
 
   return outer;
+}
+
+function buildRawDataSection(dom: jsdom.JSDOM, data: number[]) {
+  const rawDataElement = dom.window.document.createElement('pre');
+  rawDataElement.innerHTML = JSON.stringify(
+    data.reduce(
+      (acc, v, i) => ({
+        ...acc,
+        [i]: v,
+      }),
+      {}
+    ),
+    null,
+    2
+  );
+
+  return rawDataElement;
 }
