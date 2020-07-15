@@ -41,6 +41,30 @@ function buildParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
   return parent;
 }
 
+function buildColumnWithLabel(
+  dom: jsdom.JSDOM,
+  label: number,
+  value: number,
+  max: number
+): HTMLElement {
+  const column = buildColumn(dom, value, max);
+
+  const columnWithLabel = dom.window.document.createElement('div');
+  columnWithLabel.style.cssText = [
+    'display: flex;',
+    'flex-direction: column-reverse;',
+    'align-items: center;',
+    'justify-content: flex-start',
+  ].join(' ');
+
+  const labelElement = dom.window.document.createElement('div');
+  labelElement.innerHTML = label.toString();
+
+  columnWithLabel.appendChild(column);
+  columnWithLabel.appendChild(labelElement);
+  return columnWithLabel;
+}
+
 function buildColumn(
   dom: jsdom.JSDOM,
   value: number,
