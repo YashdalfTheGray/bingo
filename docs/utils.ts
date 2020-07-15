@@ -12,7 +12,7 @@ export function buildChart(data: number[]): jsdom.JSDOM {
   const chart = new jsdom.JSDOM('<!DOCTYPE html>');
 
   chart.window.document.body.appendChild(
-    buildParent(chart, Object.keys(data).length)
+    buildChartParent(chart, Object.keys(data).length)
   );
 
   const max = data.reduce((acc, v) => (acc < v ? v : acc));
@@ -25,7 +25,7 @@ export function buildChart(data: number[]): jsdom.JSDOM {
   return chart;
 }
 
-function buildParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
+function buildChartParent(dom: jsdom.JSDOM, datapoints: number): HTMLElement {
   const parentStyles = [
     'display: grid;',
     `grid-template-columns: repeat(${datapoints}, auto);`,
