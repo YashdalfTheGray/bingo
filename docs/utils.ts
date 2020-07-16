@@ -10,6 +10,10 @@ export async function writeChartFile(filename: string, chart: jsdom.JSDOM) {
 
 export function buildChart(data: number[]): jsdom.JSDOM {
   const chart = new jsdom.JSDOM('<!DOCTYPE html>');
+  chart.window.document.body.style.cssText = [
+    'background-color: #000;',
+    'color: #fff;',
+  ].join(' ');
 
   chart.window.document.body.appendChild(
     buildChartParent(chart, Object.keys(data).length)
@@ -76,7 +80,7 @@ function buildColumn(
     'width: 50px;',
     'padding: 0px 5px;',
     'position: relative;',
-    'border-bottom: solid 1px rgba(0,0,0,0.5);',
+    'border-bottom: solid 1px rgba(255,255,255,0.5);',
   ].join(' ');
 
   const innerStyles = [
