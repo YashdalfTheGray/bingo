@@ -57,3 +57,7 @@ import { writeChartFile, buildChart } from './utils';
   await writeChartFile('docs/output.html', chart);
 })();
 ```
+
+### Sample data chart
+
+![sample data](./sample-data-chart.png)
