@@ -42,34 +42,13 @@ The initial results are relatively inconsistent in generation of 10,000 numbers 
 ### The bar chart generation code
 
 ```typescript
-import * as fs from 'fs';
-import { promisify } from 'util';
-
-import * as jsdom from 'jsdom';
-
-const writeFileAsync = promisify(fs.writeFile);
-
-const doc = new jsdom.JSDOM('<!DOCTYPE html>');
-
-const resultsCode = doc.window.document.createElement('pre');
-resultsCode.innerHTML = JSON.stringify(
-  results.reduce(
-    (acc, v, i) => ({
-      ...acc,
-      [i]: v,
-    }),
-    {}
-  ),
-  null,
-  2
-);
-doc.window.document.body.appendChild(resultsCode);
+import { writeChartFile, buildChart } from './utils';
 
 (async () => {
-  try {
-    writeFileAsync('docs/output.html', doc.serialize(), 'utf-8');
-  } catch (err) {
-    console.error(err); // tslint:disable-line no-console
-  }
+  // data generation code
+
+  const chart = buildChart(results);
+
+  await writeChartFile('docs/output.html', chart);
 })();
 ```
