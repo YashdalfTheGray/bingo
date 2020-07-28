@@ -25,9 +25,7 @@ export function validate<F extends (...args: any[]) => any>(
   }
   validationConfig.forEach((config, i) => {
     if (!config.validator(args)) {
-      throw new Error(
-        `Parameter named ${config.argName} with value ${args[i]} failed validation.`
-      );
+      throw new ValidationError(config.argName, args[i]);
     }
   });
   return fn(...args);
