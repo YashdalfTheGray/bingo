@@ -3,6 +3,18 @@ interface ArgValidationConfig<F extends (...args: any[]) => any> {
   validator: (value: Parameters<F>) => boolean;
 }
 
+interface Stringable {
+  toString(): string;
+}
+
+export class ValidationError<T extends Stringable> extends Error {
+  constructor(argName: string, value: T) {
+    super(
+      `Parameter named ${argName} with value ${value.toString()} failed validation.`
+    );
+  }
+}
+
 export function validate<F extends (...args: any[]) => any>(
   fn: F,
   validationConfig: ArgValidationConfig<F>[],
