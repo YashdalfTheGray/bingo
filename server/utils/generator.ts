@@ -6,6 +6,9 @@ const getRandomNumber = (min: number, max: number): number => {
 
 const dedupe = <T>(arr: T[]): T[] => [...new Set(arr)];
 
+const excludeBounds = (a: number[], start: number, end: number) =>
+  a.filter((v) => v > start && v < end);
+
 const generateArrayOfNumbers = (length: number, min: number, max: number) =>
   validate(
     (
@@ -49,6 +52,32 @@ const generateSingleColumn = (
       ...generated,
       ...generateArrayOfNumbers(extraNumbersToGenerate, start, end),
     ]);
+  }
+
+  return generated;
+};
+
+const generateSingleColumnBoundsExclusive = (
+  start: number,
+  end: number,
+  length = 5
+): number[] => {
+  assert(end > start, 'End of the range has to be after the start');
+  assert(end - start >= length, 'Not enough unique numbers in range');
+  assert(length > 0, 'Have to request more than 0 numbers');
+
+  let generated = dedupe(generateArrayOfNumbers(length, start, end));
+  generated = excludeBounds(generated, start, end);
+
+  while (generated.length !== length) {
+    const extraNumbersToGenerate = length - generated.length;
+    const newNumbers = excludeBounds(
+      generateArrayOfNumbers(extraNumbersToGenerate, start, end),
+      start,
+      end
+    );
+
+    generated = dedupe([...generated, ...newNumbers]);
   }
 
   return generated;
