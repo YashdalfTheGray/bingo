@@ -26,6 +26,12 @@ const generateArrayOfNumbers = (length: number, min: number, max: number) =>
     max
   );
 
+/**
+ * Generates an array of (5 by default) numbers that include start and end
+ * @param start the start of the range, inclusive
+ * @param end the end of the range, inclusive
+ * @param length the length of the array to generate
+ */
 const generateSingleColumn = (
   start: number,
   end: number,
