@@ -8,10 +8,18 @@ interface Stringable {
 }
 
 export class ValidationError<T extends Stringable> extends Error {
-  constructor(argName: string, value: T) {
+  constructor(private argName: string, private val: T) {
     super(
-      `Parameter named ${argName} with value ${value.toString()} failed validation.`
+      `Parameter named ${argName} with value ${val.toString()} failed validation.`
     );
+  }
+
+  get argumentName() {
+    return this.argName;
+  }
+
+  get value() {
+    return this.val;
   }
 }
 
