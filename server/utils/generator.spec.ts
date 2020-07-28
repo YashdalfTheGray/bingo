@@ -4,6 +4,7 @@ import {
   dedupe,
   generateArrayOfNumbers,
   generateSingleColumn,
+  generateSingleColumnBoundsExclusive,
 } from './generator';
 
 test('dedupe removes duplicates from array', (t) => {
@@ -29,6 +30,15 @@ test('generateSingleColumn generates 5 unique numbers in range', (t) => {
   t.is(col.length, 5);
   col.forEach((n) => {
     t.assert(n >= 5 && n <= 10, 'numbers are not within specified range');
+  });
+  t.deepEqual(dedupe(col), col);
+});
+
+test('generateSingleColumnBoundsExlusive generates 5 unique numbers in range', (t) => {
+  const col = generateSingleColumnBoundsExclusive(4, 11);
+  t.is(col.length, 5);
+  col.forEach((n) => {
+    t.assert(n > 4 && n < 11, 'numbers are not within specified range');
   });
   t.deepEqual(dedupe(col), col);
 });

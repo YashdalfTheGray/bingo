@@ -31,6 +31,7 @@ const generateArrayOfNumbers = (length: number, min: number, max: number) =>
 
 /**
  * Generates an array of (5 by default) numbers that include start and end
+ * mathematically expressed, the range is `[start, end]`
  * @param start the start of the range, inclusive
  * @param end the end of the range, inclusive
  * @param length the length of the array to generate
@@ -59,6 +60,7 @@ const generateSingleColumn = (
 
 /**
  * generates an array of (5 by default) numbers that exclude start and end
+ * mathematically expressed, the range is `(start, end)`
  * @param start the start of the range, exclusive
  * @param end the end of the range, exlusive
  * @param length the length of the array to generate
@@ -69,7 +71,7 @@ const generateSingleColumnBoundsExclusive = (
   length = 5
 ): number[] => {
   assert(end > start, 'End of the range has to be after the start');
-  assert(end - start >= length, 'Not enough unique numbers in range');
+  assert(end - start - 2 >= length, 'Not enough unique numbers in range');
   assert(length > 0, 'Have to request more than 0 numbers');
 
   let generated = dedupe(generateArrayOfNumbers(length, start, end));
@@ -94,4 +96,5 @@ export {
   dedupe,
   generateArrayOfNumbers,
   generateSingleColumn,
+  generateSingleColumnBoundsExclusive,
 };
