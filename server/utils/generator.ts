@@ -57,6 +57,12 @@ const generateSingleColumn = (
   return generated;
 };
 
+/**
+ * generates an array of (5 by default) numbers that exclude start and end
+ * @param start the start of the range, exclusive
+ * @param end the end of the range, exlusive
+ * @param length the length of the array to generate
+ */
 const generateSingleColumnBoundsExclusive = (
   start: number,
   end: number,
