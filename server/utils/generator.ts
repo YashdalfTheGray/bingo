@@ -20,9 +20,9 @@ const generateArrayOfNumbers = (length: number, min: number, max: number) =>
         .fill(0)
         .map(() => getRandomNumber(validatedMin, validatedMax)),
     [
-      { argName: 'length', validator: ([l, mn, mx]) => l > 0 && l <= mx - mn },
       { argName: 'min', validator: ([_, mn, mx]) => mn >= 0 && mn < mx },
-      { argName: 'max', validator: ([_, mn, mx]) => max >= 0 && mn < mx },
+      { argName: 'max', validator: ([_, mn, mx]) => mx >= 0 && mn < mx },
+      { argName: 'length', validator: ([l, mn, mx]) => l > 0 && l <= mx - mn },
     ],
     length,
     min,
