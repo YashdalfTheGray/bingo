@@ -35,6 +35,30 @@ test('generateArrayOfNumbers throws when there are too few unique numbers in ran
   t.is(error.argumentName, 'length');
 });
 
+test('generateArrayOfNumbers throws when the min is larger than max', (t) => {
+  const error = t.throws<ValidationError<number>>(() =>
+    generateArrayOfNumbers(2, 10, 5)
+  );
+  t.assert(error instanceof ValidationError);
+  t.is(error.argumentName, 'min');
+});
+
+test('generateArrayOfNumbers throws when the min is less than zero', (t) => {
+  const error = t.throws<ValidationError<number>>(() =>
+    generateArrayOfNumbers(2, -10, 5)
+  );
+  t.assert(error instanceof ValidationError);
+  t.is(error.argumentName, 'min');
+});
+
+test('generateArrayOfNumbers throws when the max is less than zero', (t) => {
+  const error = t.throws<ValidationError<number>>(() =>
+    generateArrayOfNumbers(2, -10, -5)
+  );
+  t.assert(error instanceof ValidationError);
+  t.is(error.argumentName, 'min');
+});
+
 test('generateSingleColumn generates 5 unique numbers in range', (t) => {
   const col = generateSingleColumn(5, 10);
   t.is(col.length, 5);
