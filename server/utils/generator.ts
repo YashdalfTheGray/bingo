@@ -41,9 +41,9 @@ const generateSingleColumn = (
   end: number,
   length = 5
 ): number[] => {
-  assert(end > start, 'End of the range has to be after the start');
-  assert(end - start >= length, 'Not enough unique numbers in range');
-  assert(length > 0, 'Have to request more than 0 numbers');
+  assert(end > start, 'end', end);
+  assert(end - start >= length, 'length', length);
+  assert(length > 0, 'length', length);
 
   let generated = dedupe(generateArrayOfNumbers(length, start, end));
 
@@ -70,9 +70,9 @@ const generateSingleColumnBoundsExclusive = (
   end: number,
   length = 5
 ): number[] => {
-  assert(end > start, 'End of the range has to be after the start');
-  assert(end - start - 2 >= length, 'Not enough unique numbers in range');
-  assert(length > 0, 'Have to request more than 0 numbers');
+  assert(end > start, 'end', end);
+  assert(end - start - 2 >= length, 'length', length);
+  assert(length > 0, 'length', length);
 
   let generated = dedupe(generateArrayOfNumbers(length, start, end));
   generated = excludeBounds(generated, start, end);

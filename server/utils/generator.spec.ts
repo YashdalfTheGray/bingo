@@ -68,6 +68,13 @@ test('generateSingleColumn generates 5 unique numbers in range', (t) => {
   t.deepEqual(dedupe(col), col);
 });
 
+test('generateSingleColumn throws when asked for more numbers than range', (t) => {
+  const error = t.throws<ValidationError<number>>(() => {
+    generateSingleColumn(0, 5, 10);
+  });
+  t.assert(error instanceof ValidationError);
+});
+
 test('generateSingleColumnBoundsExlusive generates 5 unique numbers in range', (t) => {
   const col = generateSingleColumnBoundsExclusive(4, 11);
   t.is(col.length, 5);

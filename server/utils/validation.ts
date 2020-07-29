@@ -39,8 +39,8 @@ export function validate<F extends (...args: any[]) => any>(
   return fn(...args);
 }
 
-export function assert(condition: boolean, message: string) {
+export function assert<T>(condition: boolean, argName: string, value: T) {
   if (!condition) {
-    throw new Error(message || 'Assertion failed');
+    throw new ValidationError(argName, value);
   }
 }
