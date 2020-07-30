@@ -97,3 +97,11 @@ test('generateSingleColumnBoundsExclusive throws when bounds are negative', (t) 
   });
   t.assert(error instanceof ValidationError);
 });
+
+test('generateSingleColumnBoundsExlusive actually excludes bounds', (t) => {
+  const col = generateSingleColumnBoundsExclusive(4, 11);
+  t.is(col.length, 5);
+  t.is(col.includes(4), false);
+  t.is(col.includes(11), false);
+  t.deepEqual(dedupe(col), col);
+});
