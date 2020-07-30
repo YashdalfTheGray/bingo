@@ -83,3 +83,17 @@ test('generateSingleColumnBoundsExlusive generates 5 unique numbers in range', (
   });
   t.deepEqual(dedupe(col), col);
 });
+
+test('generateSingleColumnBoundsExclusive throws when asked for more numbers than range', (t) => {
+  const error = t.throws<ValidationError<number>>(() => {
+    generateSingleColumnBoundsExclusive(0, 5, 10);
+  });
+  t.assert(error instanceof ValidationError);
+});
+
+test('generateSingleColumnBoundsExclusive throws when bounds are negative', (t) => {
+  const error = t.throws<ValidationError<number>>(() => {
+    generateSingleColumnBoundsExclusive(-10, -5, 10);
+  });
+  t.assert(error instanceof ValidationError);
+});
