@@ -21,3 +21,22 @@ test('ValidationError properties are read only', (t) => {
   const thrownErr = t.throws(() => ((err as any).argumentName = 'test'));
   t.assert(thrownErr instanceof TypeError);
 });
+
+test('validate runs arg validators and then calls the function', (t) => {
+  const f = (a: number, b: number) => a / b;
+  const result = validation.validate(
+    f,
+    [
+      { argName: 'a', validator: ([a, b]) => a > b },
+      { argName: 'b', validator: ([a, b]) => b !== 0 },
+    ],
+    15,
+    5
+  );
+  t.is(result, 3);
+});
+
+test('validate throws an error if there are no validators passed in', (t) => {
+  const f = (a: number, b: number) => a / b;
+  t.throws(() => validation.validate(f, [], 15, 5));
+});
