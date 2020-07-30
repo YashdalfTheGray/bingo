@@ -62,6 +62,7 @@ test('generateArrayOfNumbers throws when the max is less than zero', (t) => {
 test('generateSingleColumn generates 5 unique numbers in range', (t) => {
   const col = generateSingleColumn(5, 10);
   t.is(col.length, 5);
+  t.is([...new Set(col)].length, col.length);
   col.forEach((n) => {
     t.assert(n >= 5 && n <= 10, 'numbers are not within specified range');
   });
@@ -78,6 +79,7 @@ test('generateSingleColumn throws when asked for more numbers than range', (t) =
 test('generateSingleColumnBoundsExlusive generates 5 unique numbers in range', (t) => {
   const col = generateSingleColumnBoundsExclusive(4, 11);
   t.is(col.length, 5);
+  t.is([...new Set(col)].length, col.length);
   col.forEach((n) => {
     t.assert(n > 4 && n < 11, 'numbers are not within specified range');
   });
