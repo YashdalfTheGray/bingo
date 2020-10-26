@@ -6,7 +6,7 @@
     "arrow-parens": [false],
     "indent": [true, "spaces", 2],
     "object-literal-sort-keys": [false],
-    "one-line": [true, "check-open-space", "check-whitespace"],
+    "one-line": [true, "check-open-brace", "check-whitespace"],
     "quotemark": [true, "single", "avoid-template", "avoid-escape"],
     "trailing-comma": [
       true,
