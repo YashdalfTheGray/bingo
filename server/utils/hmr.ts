@@ -3,7 +3,7 @@ import express from 'express';
 
 type WebpackConfigFunction = (
   env: any,
-  args: webpack.CliConfigOptions
+  args: webpack.Configuration
 ) => webpack.Configuration;
 
 type WebpackModeType = 'none' | 'development' | 'production';
@@ -25,7 +25,6 @@ export default function hotModuleReloadingSetup(
 
   app.use(
     require('webpack-dev-middleware')(compiler, {
-      noInfo: true,
       publicPath: config.output!.publicPath,
     })
   );
