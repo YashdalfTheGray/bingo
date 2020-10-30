@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Visualizer = require('webpack-visualizer-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDev = (mode) => mode === 'development';
@@ -88,9 +87,6 @@ module.exports = (_, argv) => ({
     new CleanWebpackPlugin({
       verbose: isDev(argv.mode),
       cleanOnceBeforeBuildPatterns: ['artifacts', '*.gz', '*.js', '*.css'],
-    }),
-    new Visualizer({
-      filename: './artifacts/stats.html',
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: argv.mode,
