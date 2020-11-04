@@ -48,8 +48,10 @@ docker build -t bingo .
 And then run the application using,
 
 ```sh
-docker run --rm -it --name bingo-test -p 8080:8080 bingo
+docker run --rm -it --name bingo-test -p 8000:8080 bingo
 ```
+
+This command runs a a container named `bingo-test` that maps port 8080 from inside the container to port 8000 of the host using the image called `bingo`. The `--rm` flag removes the container when it stops and the `-it` flag makes the container interactive, which means it attaches your terminal to it. If you would rather have the container run in the background, use `-d` and then use `docker logs --tail <container_name>` to get the logs.
 
 ### Useful NPM commands
 
