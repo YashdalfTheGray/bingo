@@ -33,7 +33,25 @@ The development build does use hot reloading for both Javascript/Typescript and 
 
 The server code is stored in the `server` folder and the client code is stored in the `client` folder. There are some common modules that are stored in a `common` folder. We use a path alias to import components into files, for example, `import CardDetailRow from '@bingo/components/CardDetailRow`. Similar path aliases exist for the common folder (`@bingo/common`) and the client folder (`@bingo/client`).
 
-## Useful NPM commands
+## Development
+
+There are two ways to run this application - docker and just NPM if you have a Node.js environment set up. You can use the NPM commands listed below to start this application up within a Node.js environment.
+
+The other way to run the application is using Docker. An important distinction here is that the Docker container runs the "production" version of the application (minification and obfuscation enabled) while the NPM commands can run both the "development" and "production" versions.
+
+To run stuff in Docker, we first have to build the application using,
+
+```sh
+docker build -t bingo .
+```
+
+And then run the application using,
+
+```sh
+docker run --rm -it --name bingo-test -p 8080:8080 bingo
+```
+
+### Useful NPM commands
 
 The code in this repository comes with large number of npm scripts listed in the `package.json` file. To help bring some clarity, some of the most used commands are listed below.
 
