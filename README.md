@@ -58,6 +58,8 @@ This command runs a a container named `bingo-test` that maps port 8080 from insi
 The code in this repository comes with large number of npm scripts listed in the `package.json` file. To help bring some clarity, some of the most used commands are listed below.
 
 - `npm start` - used to start the server and webpack in development mode (HMR enabled)
+- `npm run assets:dev` - used to run the assets build one time in development
+- `npm run assets:watch` - used to run the assets build in watch mode, recommended to use `npm start` because we also need the server running and it builds the assets too
 - `npm test` - used to run the unit tests, once
 - `npm run tslint` - used to lint the entire project
 - `npm run show-stats` - used to pull up the webpack statistics on package size and contents
