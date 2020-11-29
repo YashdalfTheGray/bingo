@@ -16,7 +16,7 @@
     "assets:dev": "webpack --mode=development",
     "assets:watch": "webpack --mode=development --watch",
     "server:dev": "NODE_ENV=development ts-node --project tsconfig.server.json server/index.ts",
-    "start:dev": "concurrently -c cyan,green \"npm:assets:watch\" \"npm:server:dev\"",
+    "start:dev": "npm run server:dev",
     "start:docker": "NODE_ENV=production node dist/server/index.js",
     "start": "npm run start:dev",
     "tslint": "tslint 'common/**/*.ts' 'client/**/*.ts' 'server/**/*.ts' 'docs/*.ts'",

@@ -70,8 +70,11 @@ The command trees below are mostly included so that it is easy to trace through 
 ```
 npm start
 |--npm run start:dev
-  |--npm run assets:dev
   |--npm run server:dev
+
+npm run assets:dev
+
+npm run assets:watch
 
 npm start:prod
 |--npm run prestart:prod
