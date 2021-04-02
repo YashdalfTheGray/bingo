@@ -1,5 +1,8 @@
 FROM node:lts
 
+# pull in the latest version of npm because we use lockfile version 2
+RUN npm install --global npm
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
