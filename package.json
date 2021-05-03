@@ -108,7 +108,7 @@
     "babel-loader": "~8.2.2",
     "clean-webpack-plugin": "~4.0.0-alpha.0",
     "concurrently": "~6.0.2",
-    "core-js": "~3.11.0",
+    "core-js": "~3.11.2",
     "css-loader": "~5.2.3",
     "cssnano": "~5.0.1",
     "husky": "~6.0.0",
