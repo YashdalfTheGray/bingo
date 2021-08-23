@@ -103,7 +103,7 @@
     "@types/node": "~15.12.5",
     "@types/webpack": "~5.28.0",
     "@types/webpack-env": "~1.16.2",
-    "autoprefixer": "~10.2.6",
+    "autoprefixer": "~10.3.2",
     "ava": "~3.15.0",
     "babel-loader": "~8.2.2",
     "clean-webpack-plugin": "~4.0.0-alpha.0",
