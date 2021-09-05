@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:latest
 
 # pull in the latest version of npm because we use lockfile version 2
 RUN npm install --global npm
