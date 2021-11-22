@@ -113,7 +113,7 @@
     "cssnano": "~5.0.8",
     "husky": "~7.0.2",
     "lint-staged": "~11.1.2",
-    "mini-css-extract-plugin": "~2.4.4",
+    "mini-css-extract-plugin": "~2.4.5",
     "nyc": "~15.1.0",
     "postcss": "~8.3.5",
     "postcss-loader": "~6.1.0",
