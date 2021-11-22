@@ -1,5 +1,5 @@
-[![Actions Status](https://github.com/YashdalfTheGray/bingo/workflows/Deploy%20to%20Amazon%20ECS/badge.svg)](https://github.com/YashdalfTheGray/bingo/actions?query=workflow%3A"Deploy+to+Amazon+ECS")
-[![Actions Status](https://github.com/YashdalfTheGray/bingo/workflows/Test%20and%20Lint/badge.svg)](https://github.com/YashdalfTheGray/bingo/actions?query=workflow%3A"Test+and+Lint")
+[![Deploy to Amazon ECS](https://github.com/YashdalfTheGray/bingo/actions/workflows/ci.yml/badge.svg)](https://github.com/YashdalfTheGray/bingo/actions/workflows/ci.yml)
+[![Test and Lint](https://github.com/YashdalfTheGray/bingo/actions/workflows/tests.yml/badge.svg)](https://github.com/YashdalfTheGray/bingo/actions/workflows/tests.yml)
 
 # bingo
 
