@@ -110,7 +110,7 @@
     "concurrently": "~6.3.0",
     "core-js": "~3.19.0",
     "css-loader": "~6.2.0",
-    "cssnano": "~5.0.8",
+    "cssnano": "~5.0.11",
     "husky": "~7.0.4",
     "lint-staged": "~11.1.2",
     "mini-css-extract-plugin": "~2.4.4",
