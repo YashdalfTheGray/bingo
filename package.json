@@ -109,7 +109,7 @@
     "clean-webpack-plugin": "~4.0.0-alpha.0",
     "concurrently": "~6.3.0",
     "core-js": "~3.19.0",
-    "css-loader": "~6.2.0",
+    "css-loader": "~6.5.1",
     "cssnano": "~5.0.8",
     "husky": "~7.0.4",
     "lint-staged": "~11.1.2",
