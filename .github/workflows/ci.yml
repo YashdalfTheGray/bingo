@@ -1,11 +1,11 @@
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
-      - "README.md"
-      - "LICENSE"
-      - ".prettierrc"
+      - 'README.md'
+      - 'LICENSE'
+      - '.prettierrc'
 
 name: Deploy to Amazon ECS
 
