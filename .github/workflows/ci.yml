@@ -51,7 +51,7 @@ jobs:
           container-name: website
           image: ${{ steps.build-image.outputs.image }}
 
-      - name: Deploy Amazon ECS task definition
+      - name: Update the service with the new task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.7
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
