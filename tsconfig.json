@@ -2,6 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "isolatedModules": false,
     "jsx": "react",
