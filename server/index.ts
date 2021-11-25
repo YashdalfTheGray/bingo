@@ -9,6 +9,7 @@ import express, {
   Response,
 } from 'express';
 import morgan from 'morgan';
+import helmet from 'helmet';
 
 import bingoRouter from './middleware/bingo';
 import hotModuleReloadingSetup from './utils/hmr';
@@ -27,6 +28,16 @@ if (process.env.NODE_ENV === 'development') {
 
 const apiRouter = express.Router();
 
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        'script-src-attr': ['unsafe-inline'],
+      },
+    },
+  })
+);
 app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static(resolve('public')));
