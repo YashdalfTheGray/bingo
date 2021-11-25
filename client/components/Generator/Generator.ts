@@ -20,9 +20,8 @@ export default class Generator extends Component<{}, IGeneratorState> {
   }
 
   public async generateCards() {
-    const numberInput = document.querySelector<HTMLInputElement>(
-      '#card-number-input'
-    );
+    const numberInput =
+      document.querySelector<HTMLInputElement>('#card-number-input');
 
     this.handleInputChanged();
 
@@ -57,17 +56,15 @@ export default class Generator extends Component<{}, IGeneratorState> {
 
     this.setState({ cards });
 
-    document.querySelector(
-      '#card-links-container'
-    )!.innerHTML = this.state.cards
-      .map((c) => new CardDetailRow({ card: c }).render())
-      .join('');
+    document.querySelector('#card-links-container')!.innerHTML =
+      this.state.cards
+        .map((c) => new CardDetailRow({ card: c }).render())
+        .join('');
   }
 
   public handleInputChanged() {
-    const numberInput = document.querySelector<HTMLInputElement>(
-      '#card-number-input'
-    );
+    const numberInput =
+      document.querySelector<HTMLInputElement>('#card-number-input');
     const value = parseInt(numberInput!.value, 10);
     if (!this.validateCardNumber(value)) {
       numberInput?.classList.add('validation-error');
@@ -83,12 +80,10 @@ export default class Generator extends Component<{}, IGeneratorState> {
           <input
             id="card-number-input"
             type="number"
-            placeholder="A number, e.g. 5"
-            onChange="${this.callClassFunction('handleInputChanged')}"/>
+            placeholder="A number, e.g. 5"/>
           <button
             id="generate-button"
-            class="button"
-            onClick="${this.callClassFunction('generateCards')}">
+            class="button">
             Generate
           </button>
         </div>
