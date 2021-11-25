@@ -1,7 +1,7 @@
 import merge from 'lodash.merge';
 
-interface IDocumentWithRegistry extends Document {
-  componentRegistry: object;
+export interface IDocumentWithRegistry extends Document {
+  componentRegistry: { [key: string]: Component };
   nextId: number;
 }
 
