@@ -10,6 +10,7 @@ import express, {
 } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import responseTime from 'response-time';
 
 import bingoRouter from './middleware/bingo';
 import hotModuleReloadingSetup from './utils/hmr';
@@ -41,6 +42,10 @@ app.use(
 app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static(resolve('public')));
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(responseTime());
+}
 
 apiRouter.use('/bingo', bingoRouter);
 apiRouter.get('/', (_, res) => {
