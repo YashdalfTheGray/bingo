@@ -32,7 +32,7 @@ export default class CardDetailRow extends Component<ICardDetailRowProps> {
     const { card } = this.props;
 
     return `
-    <div class="flex-row card-detail-row" data-card-hash="${card.hash}">
+    <div class="flex-row card-detail-row">
       <span class="card-number">
         <a href="${card.link}" target="_blank">
           Card #${parseInt(card.hash, 16).toString(10)}
@@ -43,7 +43,12 @@ export default class CardDetailRow extends Component<ICardDetailRowProps> {
           class="icon button copy-button"
           data-card-hash="${card.hash}"
           data-card-link="${card.link}"
-          data-row-id="${this.id}">
+          data-row-id="${this.id}"
+          onClick="${this.callClassFunction(
+            'handleCardCopy',
+            card.link,
+            card.hash
+          )}">
           ${share}
         </button>
         <span class="icon done-icon">${done}</span>
