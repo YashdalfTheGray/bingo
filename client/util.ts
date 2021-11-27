@@ -8,4 +8,11 @@ const tryToCopyLink = async (link: string) => {
   return document.execCommand('copy');
 };
 
-export { tryToCopyLink };
+const isTargetAnIconButton = (
+  target: EventTarget | null
+): target is HTMLButtonElement =>
+  (target instanceof HTMLButtonElement && target.classList.contains('icon')) ||
+  target instanceof SVGPathElement ||
+  target instanceof SVGElement;
+
+export { tryToCopyLink, isTargetAnIconButton };
