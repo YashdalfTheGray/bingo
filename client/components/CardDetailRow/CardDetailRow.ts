@@ -41,11 +41,9 @@ export default class CardDetailRow extends Component<ICardDetailRowProps> {
       <span class="card-actions flex-row">
         <button
           class="icon button copy-button"
-          onClick="${this.callClassFunction(
-            'handleCardCopy',
-            card.link,
-            card.hash
-          )}">
+          data-card-hash="${card.hash}"
+          data-card-link="${card.link}"
+          data-row-id="${this.id}">
           ${share}
         </button>
         <span class="icon done-icon">${done}</span>
