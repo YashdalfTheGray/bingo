@@ -1,6 +1,9 @@
 import App from '@bingo/client/App';
-import { IDocumentWithRegistry } from './Component';
-import Generator from './components/Generator';
+import { isTargetAnIconButton } from '@bingo/client/util';
+import { IDocumentWithRegistry } from '@bingo/client/Component';
+import Generator from '@bingo/components/Generator';
+import CardDetailRow from '@bingo/components/CardDetailRow';
+
 import './index.scss';
 
 const rootApp = document.querySelector('#app-root')!;
@@ -11,6 +14,13 @@ rootApp.addEventListener('click', (e) => {
       (document as IDocumentWithRegistry).componentRegistry
         .Generator4 as Generator
     ).generateCards();
+  } else if (isTargetAnIconButton(e.target)) {
+    // const dataset = e.target.dataset;
+    // (
+    //   (document as IDocumentWithRegistry).componentRegistry[
+    //     dataset.rowId!
+    //   ] as CardDetailRow
+    // ).handleCardCopy(dataset.cardLink!, dataset.cardHash!);
   }
 });
 
