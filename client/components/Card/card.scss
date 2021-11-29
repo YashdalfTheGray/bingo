@@ -57,6 +57,7 @@ $minimum-size: 72px;
         animation-fill-mode: both;
         animation-timing-function: ease-in-out;
         animation-delay: calc(var(--animation-order) * 75ms);
+        pointer-events: none;
       }
 
       .number-cross {
@@ -66,6 +67,7 @@ $minimum-size: 72px;
         background: transparent;
         width: 100%;
         height: 100%;
+        pointer-events: none;
 
         svg {
           fill-opacity: 0;

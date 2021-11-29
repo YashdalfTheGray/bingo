@@ -57,11 +57,7 @@ export default class Card extends Component<ICardProps> {
                       }"
                       data-row="${row}"
                       data-column="${col + 1}"
-                      onClick="${this.callClassFunction(
-                        'handleNumberClick',
-                        row,
-                        col + 1
-                      )}">
+                      data-component-id="${this.id}">
                         <span
                           class="number"
                           style="--animation-order: ${col + row};">
