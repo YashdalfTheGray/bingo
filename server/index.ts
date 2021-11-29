@@ -29,16 +29,16 @@ if (process.env.NODE_ENV === 'development') {
 
 const apiRouter = express.Router();
 
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       useDefaults: true,
-//       directives: {
-//         'script-src-attr': [],
-//       },
-//     },
-//   })
-// );
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        'script-src-attr': [],
+      },
+    },
+  })
+);
 app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static(resolve('public')));
