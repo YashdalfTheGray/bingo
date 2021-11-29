@@ -1,7 +1,11 @@
 import { IDocumentWithRegistry } from '@bingo/client/Component';
-import { isTargetAnIconButton } from '@bingo/client/util';
+import {
+  isTargetAnIconButton,
+  isTargetANumberContainer,
+} from '@bingo/client/util';
 import CardDetailRow from '@bingo/components/CardDetailRow';
 import Generator from '@bingo/components/Generator';
+import Card from '@bingo/components/Card';
 
 export default class EventHandler {
   constructor(private root: HTMLElement) {}
@@ -20,6 +24,16 @@ export default class EventHandler {
             dataset.rowId!
           ] as CardDetailRow
         ).handleCardCopy(dataset.cardLink!, dataset.cardHash!);
+      } else if (isTargetANumberContainer(e.target)) {
+        const dataset = e.target.dataset;
+        (
+          (document as IDocumentWithRegistry).componentRegistry[
+            dataset.componentId!
+          ] as Card
+        ).handleNumberClick(
+          parseInt(dataset.row!, 10),
+          parseInt(dataset.column!, 10)
+        );
       }
     });
 
