@@ -1,37 +1,11 @@
 import App from '@bingo/client/App';
-import { isTargetAnIconButton } from '@bingo/client/util';
-import { IDocumentWithRegistry } from '@bingo/client/Component';
-import Generator from '@bingo/components/Generator';
-import CardDetailRow from '@bingo/components/CardDetailRow';
+import EventHandler from '@bingo/components/EventHandler';
 
 import './index.scss';
 
-const rootApp = document.querySelector('#app-root')!;
-
-rootApp.addEventListener('click', (e) => {
-  if ((e.target as HTMLElement).id === 'generate-button') {
-    (
-      (document as IDocumentWithRegistry).componentRegistry
-        .Generator4 as Generator
-    ).generateCards();
-  } else if (isTargetAnIconButton(e.target)) {
-    // const dataset = e.target.dataset;
-    // (
-    //   (document as IDocumentWithRegistry).componentRegistry[
-    //     dataset.rowId!
-    //   ] as CardDetailRow
-    // ).handleCardCopy(dataset.cardLink!, dataset.cardHash!);
-  }
-});
-
-rootApp.addEventListener('change', (e) => {
-  if ((e.target as HTMLElement).id === 'card-number-input') {
-    (
-      (document as IDocumentWithRegistry).componentRegistry
-        .Generator4 as Generator
-    ).handleInputChanged();
-  }
-});
+const rootApp = document.querySelector<HTMLDivElement>('#app-root')!;
+const eventHandler = new EventHandler(rootApp);
+eventHandler.setup();
 
 rootApp.innerHTML = new App().render();
 
