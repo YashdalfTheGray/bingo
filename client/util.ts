@@ -11,9 +11,7 @@ export const tryToCopyLink = async (link: string) => {
 export const isTargetAnIconButton = (
   target: EventTarget | null
 ): target is HTMLButtonElement =>
-  (target instanceof HTMLButtonElement && target.classList.contains('icon')) ||
-  target instanceof SVGPathElement ||
-  target instanceof SVGElement;
+  target instanceof HTMLButtonElement && target.classList.contains('icon');
 
 export const isTargetANumberContainer = (
   target: EventTarget | null
