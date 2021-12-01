@@ -32,6 +32,7 @@ const apiRouter = express.Router();
 app.use(
   helmet({
     contentSecurityPolicy: {
+      useDefaults: false,
       directives: {
         'default-src': ["'self'"],
         'base-uri': ["'self'"],
