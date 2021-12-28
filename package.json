@@ -100,7 +100,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.16.5",
-    "@babel/plugin-proposal-class-properties": "~7.16.0",
+    "@babel/plugin-proposal-class-properties": "~7.16.5",
     "@babel/plugin-proposal-object-rest-spread": "~7.16.5",
     "@babel/preset-env": "~7.16.4",
     "@types/node": "~16.11.6",
@@ -113,7 +113,7 @@
     "concurrently": "~6.4.0",
     "core-js": "~3.20.0",
     "css-loader": "~6.5.1",
-    "cssnano": "~5.0.8",
+    "cssnano": "~5.0.14",
     "husky": "~7.0.4",
     "lint-staged": "~12.1.2",
     "mini-css-extract-plugin": "~2.4.4",
