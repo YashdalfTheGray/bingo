@@ -26,7 +26,7 @@
     "test:no-coverage": "ava",
     "open-coverage": "npx open coverage/index.html",
     "open-workbook-result": "npx open docs/output.html",
-    "prettier": "prettier --write",
+    "prettier": "prettier --write client/**/*.ts server/**/*.ts docs/*.ts public/index.html",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
