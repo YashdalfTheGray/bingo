@@ -30,7 +30,7 @@ test('generateArrayOfNumbers generates within constraints', (t) => {
 test('generateArrayOfNumbers throws when there are too few unique numbers in range', (t) => {
   const error = t.throws<ValidationError<number>>(() =>
     generateArrayOfNumbers(10, 1, 5)
-  );
+  )!;
   t.assert(error instanceof ValidationError);
   t.is(error.argumentName, 'length');
 });
@@ -38,7 +38,7 @@ test('generateArrayOfNumbers throws when there are too few unique numbers in ran
 test('generateArrayOfNumbers throws when the min is larger than max', (t) => {
   const error = t.throws<ValidationError<number>>(() =>
     generateArrayOfNumbers(2, 10, 5)
-  );
+  )!;
   t.assert(error instanceof ValidationError);
   t.is(error.argumentName, 'min');
 });
@@ -46,7 +46,7 @@ test('generateArrayOfNumbers throws when the min is larger than max', (t) => {
 test('generateArrayOfNumbers throws when the min is less than zero', (t) => {
   const error = t.throws<ValidationError<number>>(() =>
     generateArrayOfNumbers(2, -10, 5)
-  );
+  )!;
   t.assert(error instanceof ValidationError);
   t.is(error.argumentName, 'min');
 });
@@ -54,7 +54,7 @@ test('generateArrayOfNumbers throws when the min is less than zero', (t) => {
 test('generateArrayOfNumbers throws when the max is less than zero', (t) => {
   const error = t.throws<ValidationError<number>>(() =>
     generateArrayOfNumbers(2, -10, -5)
-  );
+  )!;
   t.assert(error instanceof ValidationError);
   t.is(error.argumentName, 'min');
 });
