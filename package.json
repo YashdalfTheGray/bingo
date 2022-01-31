@@ -89,7 +89,7 @@
     "@types/xxhashjs": "0.2.2",
     "body-parser": "~1.19.1",
     "chalk": "4.1.2",
-    "dotenv": "~14.3.2",
+    "dotenv": "~15.0.0",
     "express": "~4.17.1",
     "helmet": "~5.0.2",
     "lodash.merge": "~4.6.2",
