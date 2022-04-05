@@ -120,7 +120,7 @@
     "nyc": "~15.1.0",
     "postcss": "~8.4.5",
     "postcss-loader": "~6.2.0",
-    "prettier": "~2.5.1",
+    "prettier": "~2.6.2",
     "regenerator-runtime": "~0.13.9",
     "sass": "~1.49.9",
     "sass-loader": "~12.4.0",
