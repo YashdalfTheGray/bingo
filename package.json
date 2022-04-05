@@ -109,7 +109,7 @@
     "ava": "~4.1.0",
     "babel-loader": "~8.2.2",
     "clean-webpack-plugin": "~4.0.0-alpha.0",
-    "concurrently": "~7.0.0",
+    "concurrently": "~7.1.0",
     "core-js": "~3.21.1",
     "css-loader": "~6.6.0",
     "cssnano": "~5.1.4",
