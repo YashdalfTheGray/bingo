@@ -111,7 +111,7 @@
     "clean-webpack-plugin": "~4.0.0-alpha.0",
     "concurrently": "~7.1.0",
     "core-js": "~3.21.1",
-    "css-loader": "~6.6.0",
+    "css-loader": "~6.7.1",
     "cssnano": "~5.1.4",
     "dotenv": "~16.0.0",
     "husky": "~7.0.4",
