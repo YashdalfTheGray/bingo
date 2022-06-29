@@ -3,6 +3,7 @@ public/**/*.css
 public/**/*.js
 public/**/*.map
 public/**/*.json
+public/**/*.txt
 public/artifacts
 docs/output.html
 
