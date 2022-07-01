@@ -13,9 +13,22 @@ export async function getBrowser(
   otherOptions?: Partial<AllPuppeteerLaunchOptions>
 ): Promise<puppeteer.Browser> {
   const options: AllPuppeteerLaunchOptions = {
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    ignoreHTTPSErrors: true,
     headless: process.env.DEBUG !== 'interactive',
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--disable-gpu',
+    ],
   };
+
+  if (process.env.SLOWDOWN_IN_MS) {
+    options.slowMo = parseInt(process.env.SLOWDOWN_IN_MS, 10);
+  }
 
   return puppeteer.launch(Object.assign(options, otherOptions));
 }
