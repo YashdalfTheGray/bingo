@@ -1,5 +1,8 @@
 import * as dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
+import fetch from 'node-fetch';
+
+import { ICardResponse } from '@bingo/client/service';
 
 let browserInstance: puppeteer.Browser | null = null;
 
@@ -71,4 +74,10 @@ export async function waitForNotLoading(
     hidden: true,
   });
   return page;
+}
+
+export async function getOneBingoCard(host: string) {
+  const response = await fetch(`${host}/api/bingo/one`);
+  const json = (await response.json()) as ICardResponse;
+  return json.card;
 }
