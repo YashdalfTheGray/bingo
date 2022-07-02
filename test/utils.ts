@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 
+let browserInstance: puppeteer.Browser | null = null;
+
 export type AllPuppeteerLaunchOptions = puppeteer.LaunchOptions &
   puppeteer.BrowserLaunchArgumentOptions &
   puppeteer.BrowserConnectOptions;
@@ -12,6 +14,14 @@ export function setupEnvironment() {
 export async function getBrowser(
   otherOptions?: Partial<AllPuppeteerLaunchOptions>
 ): Promise<puppeteer.Browser> {
+  if (browserInstance) {
+    /* tslint:disable-next-line */
+    console.log(
+      `already have browser with version ${browserInstance.version}, returning`
+    );
+    return browserInstance;
+  }
+
   const options: AllPuppeteerLaunchOptions = {
     ignoreHTTPSErrors: true,
     headless: process.env.DEBUG !== 'interactive',
@@ -30,7 +40,11 @@ export async function getBrowser(
     options.slowMo = parseInt(process.env.SLOWDOWN_IN_MS, 10);
   }
 
-  return puppeteer.launch(Object.assign(options, otherOptions));
+  browserInstance = await puppeteer.launch(
+    Object.assign(options, otherOptions)
+  );
+
+  return browserInstance;
 }
 
 export async function openApp(browser: puppeteer.Browser, url: string) {
