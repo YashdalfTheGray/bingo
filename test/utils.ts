@@ -51,9 +51,13 @@ export async function getBrowser(
 }
 
 export async function openApp(browser: puppeteer.Browser, url: string) {
+  const { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } = process.env;
+  const height = parseInt(VIEWPORT_HEIGHT!, 10) || 768;
+  const width = parseInt(VIEWPORT_WIDTH!, 10) || 1200;
+
   const page = await browser.newPage();
 
-  await page.setViewport({ height: 768, width: 1200 });
+  await page.setViewport({ height, width });
   await page.goto(url);
 
   return page;
