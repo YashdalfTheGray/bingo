@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import fetch from 'node-fetch';
+import { ExecutionContext } from 'ava';
 
 import { ICardResponse } from '@bingo/client/service';
 
@@ -84,4 +85,18 @@ export async function getOneBingoCard(host: string) {
   const response = await fetch(`${host}/api/bingo/one`);
   const json = (await response.json()) as ICardResponse;
   return json.card;
+}
+
+export async function withPage(
+  t: ExecutionContext,
+  run: (t: ExecutionContext, page: puppeteer.Page) => Promise<void>
+) {
+  const browser = await getBrowser();
+  const page = await browser.newPage();
+  try {
+    await run(t, page);
+  } finally {
+    await page.close();
+    await browser.close();
+  }
 }
