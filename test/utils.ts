@@ -100,3 +100,19 @@ export async function withPage(
     await browser.close();
   }
 }
+
+export function withPageAt(url: string) {
+  return async function withPageAtInner(
+    t: ExecutionContext,
+    run: (t: ExecutionContext, page: puppeteer.Page) => Promise<void>
+  ) {
+    const browser = await getBrowser();
+    const page = await openApp(browser, url);
+    try {
+      await run(t, page);
+    } finally {
+      await page.close();
+      await browser.close();
+    }
+  };
+}
