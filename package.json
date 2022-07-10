@@ -48,14 +48,6 @@
       "prettier --write"
     ]
   },
-  "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
-  },
   "nyc": {
     "include": [
       "client/**/*.ts",
@@ -65,7 +57,8 @@
     "exclude": [
       "client/**/*.spec.ts",
       "common/**/*.spec.ts",
-      "server/**/*.spec.ts"
+      "server/**/*.spec.ts",
+      "test/**/*.ts"
     ],
     "extension": [
       ".ts"
