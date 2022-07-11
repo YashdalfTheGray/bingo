@@ -24,6 +24,7 @@
     "show-stats": "npx open ./dist/artifacts/stats.html",
     "test": "nyc ava --config ava.unit.config.js",
     "test:no-coverage": "ava --config ava.unit.config.js",
+    "functional-test:no-coverage": "ava --config ava.func.config.js",
     "open-coverage": "npx open coverage/index.html",
     "open-workbook-result": "npx open docs/output.html",
     "prettier": "prettier --write client/**/*.ts server/**/*.ts docs/*.ts public/index.html",
