@@ -1,6 +1,8 @@
 import test from 'ava';
 
-import { withPageAt } from './utils';
+import { withPageAt, setupEnvironment } from './utils';
+
+test.before(() => setupEnvironment());
 
 test(
   'something shows up on the page',
