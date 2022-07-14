@@ -6,7 +6,7 @@ test.before(() => setupEnvironment());
 
 test(
   'something shows up on the page',
-  withPageAt('http://localhost:8080'),
+  withPageAt(process.env.TEST_SERVER_URL!),
   async (t, page) => {
     const header = await page.$('#app-root .bingo-header .title');
 
@@ -16,7 +16,7 @@ test(
 
 test(
   'we see the generate view when there is no card query param',
-  withPageAt('http://localhost:8080'),
+  withPageAt(process.env.TEST_SERVER_URL!),
   async (t, page) => {
     const numberInput = await page.$('#app-root .generator #card-number-input');
     const generateButton = await page.$(
