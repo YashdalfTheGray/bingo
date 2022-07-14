@@ -1,8 +1,14 @@
 import test from 'ava';
 
-import { withPageAt, setupEnvironment } from './utils';
+import { withPageAt, setupEnvironment, getOneBingoCard } from './utils';
 
-test.before(() => setupEnvironment());
+let cardId = '';
+
+test.before(async () => {
+  setupEnvironment();
+
+  cardId = await getOneBingoCard(process.env.TEST_SERVER_URL!);
+});
 
 test(
   'something shows up on the page',
