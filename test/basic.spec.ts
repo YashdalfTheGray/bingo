@@ -33,3 +33,13 @@ test(
     t.truthy(generateButton);
   }
 );
+
+test(
+  'we see a bingo card when a card url param is given',
+  withPageAt(`${process.env.TEST_SERVER_URL}/?card=${cardId}`),
+  async (t, page) => {
+    const card = await page.$('#app-root .content .card');
+
+    t.truthy(card);
+  }
+);
