@@ -3,16 +3,18 @@ import test from 'ava';
 import { withPageAt, setupEnvironment, getOneBingoCard } from './utils';
 
 let cardId = '';
+let testServerUrl = '';
 
 test.before(async () => {
   setupEnvironment();
+  testServerUrl = process.env.TEST_SERVER_URL!;
 
-  cardId = await getOneBingoCard(process.env.TEST_SERVER_URL!);
+  cardId = await getOneBingoCard(testServerUrl);
 });
 
 test(
   'something shows up on the page',
-  withPageAt(process.env.TEST_SERVER_URL!),
+  withPageAt(testServerUrl),
   async (t, page) => {
     const header = await page.$('#app-root .bingo-header .title');
 
@@ -22,7 +24,7 @@ test(
 
 test(
   'we see the generate view when there is no card query param',
-  withPageAt(process.env.TEST_SERVER_URL!),
+  withPageAt(testServerUrl),
   async (t, page) => {
     const numberInput = await page.$('#app-root .generator #card-number-input');
     const generateButton = await page.$(
@@ -36,7 +38,7 @@ test(
 
 test(
   'we see a bingo card when a card url param is given',
-  withPageAt(`${process.env.TEST_SERVER_URL}/?card=${cardId}`),
+  withPageAt(`${testServerUrl}/?card=${cardId}`),
   async (t, page) => {
     const card = await page.$('#app-root .content .card');
 
