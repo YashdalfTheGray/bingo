@@ -135,3 +135,7 @@ export function getBaseAppUrl() {
 
   return process.env.TEST_SERVER_URL;
 }
+
+export function getUrlForCard(cardId: string) {
+  return `${getBaseAppUrl()}/?card=${cardId}`;
+}
