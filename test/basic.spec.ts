@@ -1,31 +1,31 @@
 import test from 'ava';
 
-import { withPageAt, setupEnvironment, getOneBingoCard } from './utils';
+import {
+  withPage,
+  setupEnvironment,
+  getOneBingoCard,
+  getBaseAppUrl,
+  getUrlForCard,
+} from './utils';
 
-let cardId = '';
-let testServerUrl = '';
-
-test.before(async () => {
+test.before(() => {
   setupEnvironment();
-  testServerUrl = process.env.TEST_SERVER_URL!;
+});
 
-  cardId = await getOneBingoCard(testServerUrl);
+test('something shows up on the page', withPage, async (t, page) => {
+  await page.goto(getBaseAppUrl());
+
+  const header = await page.$('#app-root .bingo-header .title');
+
+  t.truthy(header);
 });
 
 test(
-  'something shows up on the page',
-  withPageAt(testServerUrl),
-  async (t, page) => {
-    const header = await page.$('#app-root .bingo-header .title');
-
-    t.truthy(header);
-  }
-);
-
-test(
   'we see the generate view when there is no card query param',
-  withPageAt(testServerUrl),
+  withPage,
   async (t, page) => {
+    await page.goto(getBaseAppUrl());
+
     const numberInput = await page.$('#app-root .generator #card-number-input');
     const generateButton = await page.$(
       '#app-root .generator #generate-button'
@@ -38,8 +38,13 @@ test(
 
 test(
   'we see a bingo card when a card url param is given',
-  withPageAt(`${testServerUrl}/?card=${cardId}`),
+  withPage,
   async (t, page) => {
+    const cardId = await getOneBingoCard(getBaseAppUrl());
+    const cardUrl = getUrlForCard(cardId);
+
+    await page.goto(cardUrl);
+
     const card = await page.$('#app-root .content .card');
 
     t.truthy(card);
