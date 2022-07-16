@@ -1,21 +1,26 @@
 import test from 'ava';
 
-import { withPageAt, setupEnvironment, getOneBingoCard } from './utils';
-
-let cardId = '';
-let testServerUrl = '';
+import {
+  withPage,
+  setupEnvironment,
+  getOneBingoCard,
+  getBaseAppUrl,
+  getUrlForCard,
+} from './utils';
 
 test.before(async () => {
   setupEnvironment();
-  testServerUrl = process.env.TEST_SERVER_URL!;
-
-  cardId = await getOneBingoCard(testServerUrl);
 });
 
 test(
   'the right number of containers are generated',
-  withPageAt(`${testServerUrl}/?card=${cardId}`),
+  withPage,
   async (t, page) => {
+    const cardId = await getOneBingoCard(getBaseAppUrl());
+    const cardUrl = getUrlForCard(cardId);
+
+    await page.goto(cardUrl);
+
     const allContainers = await page.$$(
       '#app-root .content .card .number-container'
     );
