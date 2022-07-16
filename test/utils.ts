@@ -91,7 +91,14 @@ export async function withPage(
   run: (t: ExecutionContext, page: puppeteer.Page) => Promise<void>
 ) {
   const browser = await getBrowser();
+
+  const { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } = process.env;
+  const height = parseInt(VIEWPORT_HEIGHT!, 10) || 768;
+  const width = parseInt(VIEWPORT_WIDTH!, 10) || 1200;
+
   const page = await browser.newPage();
+
+  await page.setViewport({ height, width });
   try {
     await run(t, page);
   } finally {
