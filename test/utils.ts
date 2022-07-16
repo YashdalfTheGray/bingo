@@ -122,3 +122,16 @@ export function withPageAt(url: string) {
     }
   };
 }
+
+export function getBaseAppUrl() {
+  if (!process.env.TEST_SERVER_URL) {
+    throw new Error(
+      [
+        'TEST_SERVER_URL environment variable is not defined.',
+        'Likely, getBaseAppUrl() was called before calling setupEnvironment()',
+      ].join('\n')
+    );
+  }
+
+  return process.env.TEST_SERVER_URL;
+}
