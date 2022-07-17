@@ -1,5 +1,5 @@
 declare module 'puppeteer-to-istanbul' {
-  import { Coverage } from 'puppeteer';
+  import { CoverageEntry } from 'puppeteer';
 
   interface WriteOptions {
     storagePath: string;
@@ -8,8 +8,10 @@ declare module 'puppeteer-to-istanbul' {
   }
 
   interface PTI {
-    write: (data: Coverage, options: WriteOptions) => void;
+    write: (data: CoverageEntry[], options: WriteOptions) => void;
   }
 
-  export = PTI;
+  const pti: PTI;
+
+  export = pti;
 }
