@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import { ExecutionContext } from 'ava';
+import pti from 'puppeteer-to-istanbul';
 
 import { ICardResponse } from '@bingo/client/service';
 
@@ -85,10 +86,25 @@ export async function withPage(
 
   const page = await browser.newPage();
 
+  await Promise.all([
+    page.coverage.startJSCoverage(),
+    page.coverage.startCSSCoverage(),
+  ]);
+
   await page.setViewport({ height, width });
   try {
     await run(t, page);
   } finally {
+    const [jsCoverage, cssCoverage] = await Promise.all([
+      page.coverage.stopJSCoverage(),
+      page.coverage.stopCSSCoverage(),
+    ]);
+
+    pti.write([...jsCoverage, ...cssCoverage], {
+      includeHostname: true,
+      storagePath: './.nyc_output',
+    });
+
     await page.close();
     await browser.close();
   }
