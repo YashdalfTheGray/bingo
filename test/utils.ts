@@ -50,19 +50,6 @@ export async function getBrowser(
   return browserInstance;
 }
 
-export async function openApp(browser: puppeteer.Browser, url: string) {
-  const { VIEWPORT_HEIGHT, VIEWPORT_WIDTH } = process.env;
-  const height = parseInt(VIEWPORT_HEIGHT!, 10) || 768;
-  const width = parseInt(VIEWPORT_WIDTH!, 10) || 1200;
-
-  const page = await browser.newPage();
-
-  await page.setViewport({ height, width });
-  await page.goto(url);
-
-  return page;
-}
-
 export async function screenshot(page: puppeteer.Page, path: string) {
   return ['screenshot', 'interactive'].includes(process.env.DEBUG || '')
     ? page.screenshot({ path, fullPage: true })
@@ -105,22 +92,6 @@ export async function withPage(
     await page.close();
     await browser.close();
   }
-}
-
-export function withPageAt(url: string) {
-  return async function withPageAtInner(
-    t: ExecutionContext,
-    run: (t: ExecutionContext, page: puppeteer.Page) => Promise<void>
-  ) {
-    const browser = await getBrowser();
-    const page = await openApp(browser, url);
-    try {
-      await run(t, page);
-    } finally {
-      await page.close();
-      await browser.close();
-    }
-  };
 }
 
 export function getBaseAppUrl() {
