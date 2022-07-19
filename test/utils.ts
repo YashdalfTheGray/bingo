@@ -126,3 +126,9 @@ export function getBaseAppUrl() {
 export function getUrlForCard(cardId: string) {
   return `${getBaseAppUrl()}/?card=${cardId}`;
 }
+
+export function isCoverageEnabled() {
+  const coverageValueString = process.env.COVERAGE_ENABLED;
+
+  return coverageValueString === '1';
+}
