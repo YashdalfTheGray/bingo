@@ -85,25 +85,29 @@ export async function withPage(
   const width = parseInt(VIEWPORT_WIDTH!, 10) || 1200;
 
   const page = await browser.newPage();
-
-  await Promise.all([
-    page.coverage.startJSCoverage(),
-    page.coverage.startCSSCoverage(),
-  ]);
-
   await page.setViewport({ height, width });
+
+  if (isCoverageEnabled()) {
+    await Promise.all([
+      page.coverage.startJSCoverage(),
+      page.coverage.startCSSCoverage(),
+    ]);
+  }
+
   try {
     await run(t, page);
   } finally {
-    const [jsCoverage, cssCoverage] = await Promise.all([
-      page.coverage.stopJSCoverage(),
-      page.coverage.stopCSSCoverage(),
-    ]);
+    if (isCoverageEnabled()) {
+      const [jsCoverage, cssCoverage] = await Promise.all([
+        page.coverage.stopJSCoverage(),
+        page.coverage.stopCSSCoverage(),
+      ]);
 
-    pti.write([...jsCoverage, ...cssCoverage], {
-      includeHostname: true,
-      storagePath: process.env.COVERAGE_STORAGE_PATH!,
-    });
+      pti.write([...jsCoverage, ...cssCoverage], {
+        includeHostname: true,
+        storagePath: process.env.COVERAGE_STORAGE_PATH!,
+      });
+    }
 
     await page.close();
     await browser.close();
