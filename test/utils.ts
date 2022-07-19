@@ -102,7 +102,7 @@ export async function withPage(
 
     pti.write([...jsCoverage, ...cssCoverage], {
       includeHostname: true,
-      storagePath: './.nyc_output',
+      storagePath: process.env.COVERAGE_STORAGE_PATH!,
     });
 
     await page.close();
