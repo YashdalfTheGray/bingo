@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 import puppeteer from 'puppeteer';
 import { ExecutionContext } from 'ava';
-import pti from 'puppeteer-to-istanbul';
 
 import { ICardResponse } from '@bingo/client/service';
 
@@ -87,28 +86,9 @@ export async function withPage(
   const page = await browser.newPage();
   await page.setViewport({ height, width });
 
-  if (isCoverageEnabled()) {
-    await Promise.all([
-      page.coverage.startJSCoverage(),
-      page.coverage.startCSSCoverage(),
-    ]);
-  }
-
   try {
     await run(t, page);
   } finally {
-    if (isCoverageEnabled()) {
-      const [jsCoverage, cssCoverage] = await Promise.all([
-        page.coverage.stopJSCoverage(),
-        page.coverage.stopCSSCoverage(),
-      ]);
-
-      pti.write([...jsCoverage, ...cssCoverage], {
-        includeHostname: true,
-        storagePath: process.env.COVERAGE_STORAGE_PATH!,
-      });
-    }
-
     await page.close();
     await browser.close();
   }
@@ -129,10 +109,4 @@ export function getBaseAppUrl() {
 
 export function getUrlForCard(cardId: string) {
   return `${getBaseAppUrl()}/?card=${cardId}`;
-}
-
-export function isCoverageEnabled() {
-  const coverageValueString = process.env.COVERAGE_ENABLED;
-
-  return coverageValueString === '1';
 }
