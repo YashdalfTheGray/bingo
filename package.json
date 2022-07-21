@@ -24,8 +24,8 @@
     "show-stats": "npx open ./dist/artifacts/stats.html",
     "test": "nyc ava --config ava.unit.config.js",
     "test:no-coverage": "ava --config ava.unit.config.js",
-    "functional-test": "COVERAGE_ENABLED=1 ava --config ava.func.config.js",
-    "functional-test:no-coverage": "COVERAGE_ENABLED=0 ava --config ava.func.config.js",
+    "functional-test": "ava --config ava.func.config.js",
+    "functional-test:no-coverage": "ava --config ava.func.config.js",
     "open-coverage": "npx open coverage/index.html",
     "open-workbook-result": "npx open docs/output.html",
     "prettier": "prettier --write client/**/*.ts server/**/*.ts docs/*.ts public/index.html",
@@ -89,7 +89,6 @@
     "lodash.merge": "~4.6.2",
     "morgan": "~1.10.0",
     "node-fetch": "~3.2.3",
-    "puppeteer-to-istanbul": "^1.4.0",
     "response-time": "~2.3.2",
     "xxhashjs": "~0.2.2"
   },
