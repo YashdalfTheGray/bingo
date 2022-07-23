@@ -39,3 +39,20 @@ test('the card rows contain links', withPage, async (t, page) => {
 
   t.truthy(cardLinks.every((v) => /\?card=/.test(v)));
 });
+
+test('the card rows contain share buttons', withPage, async (t, page) => {
+  await page.goto(getBaseAppUrl());
+
+  await page.$('#app-root .bingo-header .title');
+
+  await page.type('#app-root #card-number-input', '5');
+  await page.click('#app-root #generate-button');
+
+  await page.waitForSelector('#app-root .card-detail-row');
+
+  const cardActions = await page.$$(
+    '#app-root .card-detail-row .card-actions button'
+  );
+
+  t.is(cardActions.length, 5);
+});
