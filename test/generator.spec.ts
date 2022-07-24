@@ -7,25 +7,29 @@ test.before(() => {
 });
 
 test('the generator generates specified cards', withPage, async (t, page) => {
+  const numberToGenerate = 5;
+
   await page.goto(getBaseAppUrl());
 
   await page.$('#app-root .bingo-header .title');
 
-  await page.type('#app-root #card-number-input', '5');
+  await page.type('#app-root #card-number-input', numberToGenerate.toString());
   await page.click('#app-root #generate-button');
 
   await page.waitForSelector('#app-root .card-detail-row');
   const cardsGenerated = await page.$$('#app-root .card-detail-row');
 
-  t.is(cardsGenerated.length, 5);
+  t.is(cardsGenerated.length, numberToGenerate);
 });
 
 test('the card rows contain links', withPage, async (t, page) => {
+  const numberToGenerate = 5;
+
   await page.goto(getBaseAppUrl());
 
   await page.$('#app-root .bingo-header .title');
 
-  await page.type('#app-root #card-number-input', '5');
+  await page.type('#app-root #card-number-input', numberToGenerate.toString());
   await page.click('#app-root #generate-button');
 
   await page.waitForSelector('#app-root .card-detail-row');
@@ -41,11 +45,13 @@ test('the card rows contain links', withPage, async (t, page) => {
 });
 
 test('the card rows contain share buttons', withPage, async (t, page) => {
+  const numberToGenerate = 5;
+
   await page.goto(getBaseAppUrl());
 
   await page.$('#app-root .bingo-header .title');
 
-  await page.type('#app-root #card-number-input', '5');
+  await page.type('#app-root #card-number-input', numberToGenerate.toString());
   await page.click('#app-root #generate-button');
 
   await page.waitForSelector('#app-root .card-detail-row');
@@ -54,18 +60,23 @@ test('the card rows contain share buttons', withPage, async (t, page) => {
     '#app-root .card-detail-row .card-actions button'
   );
 
-  t.is(cardActions.length, 5);
+  t.is(cardActions.length, numberToGenerate);
 });
 
 test(
   'a check appears on click of the share button',
   withPage,
   async (t, page) => {
+    const numberToGenerate = 1;
+
     await page.goto(getBaseAppUrl());
 
     await page.$('#app-root .bingo-header .title');
 
-    await page.type('#app-root #card-number-input', '1');
+    await page.type(
+      '#app-root #card-number-input',
+      numberToGenerate.toString()
+    );
     await page.click('#app-root #generate-button');
 
     await page.waitForSelector('#app-root .card-detail-row');
