@@ -2,7 +2,7 @@ const baseConfig = require('./ava.base.config');
 
 module.exports = Object.assign({}, baseConfig, {
   files: ['test/**/*.spec.ts'],
-  concurrency: 2,
+  concurrency: 1,
   failFast: true,
   failWithoutAssertions: true,
 });
