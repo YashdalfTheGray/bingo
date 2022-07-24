@@ -32,3 +32,26 @@ test(
     t.is(allContainers.length - headers.length, 25);
   }
 );
+
+// test(
+//   'clicking on a number container marks it crossed',
+//   withPage,
+//   async (t, page) => {
+//     const cardId = await getOneBingoCard(getBaseAppUrl());
+//     const cardUrl = getUrlForCard(cardId);
+
+//     await page.goto(cardUrl);
+
+//     const numberContainers = await page.$$(
+//       '#app-root .content .card .number-container:not(.is-header)'
+//     );
+
+//     await Promise.all(numberContainers.map((c) => c.click()));
+
+//     const numberCrosses = await page.$$(
+//       '#app-root .content .card .number-container:not(.is-header) .number-cross.visible'
+//     );
+
+//     t.is(numberCrosses.length, 25);
+//   }
+// );
