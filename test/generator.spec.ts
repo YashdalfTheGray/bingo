@@ -56,3 +56,26 @@ test('the card rows contain share buttons', withPage, async (t, page) => {
 
   t.is(cardActions.length, 5);
 });
+
+test(
+  'a check appears on click of the share button',
+  withPage,
+  async (t, page) => {
+    await page.goto(getBaseAppUrl());
+
+    await page.$('#app-root .bingo-header .title');
+
+    await page.type('#app-root #card-number-input', '1');
+    await page.click('#app-root #generate-button');
+
+    await page.waitForSelector('#app-root .card-detail-row');
+
+    await page.click('#app-root .card-detail-row .card-actions .copy-button');
+
+    const doneIcon = await page.$(
+      '#app-root .card-detail-row .card-actions .done-icon.visible'
+    );
+
+    t.truthy(doneIcon);
+  }
+);
