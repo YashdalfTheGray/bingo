@@ -33,6 +33,8 @@ The development build does use hot reloading for both Javascript/Typescript and 
 
 The server code is stored in the `server` folder and the client code is stored in the `client` folder. There are some common modules that are stored in a `common` folder. We use a path alias to import components into files, for example, `import CardDetailRow from '@bingo/components/CardDetailRow`. Similar path aliases exist for the common folder (`@bingo/common`) and the client folder (`@bingo/client`).
 
+There are also functional tests included in the `test` folder. These tests exercise different aspects of the application so that changes don't break some of the core functionality and we can validate in an automated way.
+
 ## Development
 
 There are two ways to run this application - docker and just NPM if you have a Node.js environment set up. You can use the NPM commands listed below to start this application up within a Node.js environment.
@@ -61,6 +63,7 @@ The code in this repository comes with large number of npm scripts listed in the
 - `npm run assets:dev` - used to run the assets build one time in development
 - `npm run assets:watch` - used to run the assets build in watch mode, recommended to use `npm start` because we also need the server running and it builds the assets too
 - `npm test` - used to run the unit tests, once
+- `npm run functional-test` - used to run the functional tests based off of puppeteer
 - `npm run tslint` - used to lint the entire project
 - `npm run show-stats` - used to pull up the webpack statistics on package size and contents
 - `npm run start:prod` - used to start the server and webpack in production mode (HMR disabled)
