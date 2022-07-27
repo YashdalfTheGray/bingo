@@ -62,8 +62,11 @@ The code in this repository comes with large number of npm scripts listed in the
 - `npm start` - used to start the server and webpack in development mode (HMR enabled)
 - `npm run assets:dev` - used to run the assets build one time in development
 - `npm run assets:watch` - used to run the assets build in watch mode, recommended to use `npm start` because we also need the server running and it builds the assets too
-- `npm test` - used to run the unit tests, once
+- `npm run unit-test` - used to run the unit tests, with coverage
+- `npm test` - alias for `npm run unit-test`
+- `npm run unit-test:no-coverage` - used to run the unit tests without coverage
 - `npm run functional-test` - used to run the functional tests based off of puppeteer
+- `npm run test:all` - used to run all the test suites
 - `npm run tslint` - used to lint the entire project
 - `npm run show-stats` - used to pull up the webpack statistics on package size and contents
 - `npm run start:prod` - used to start the server and webpack in production mode (HMR disabled)
