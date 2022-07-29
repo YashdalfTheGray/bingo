@@ -79,3 +79,24 @@ test(
     t.is(numberCrosses.length, 25);
   }
 );
+
+test('clicking on the bingo header does nothing', withPage, async (t, page) => {
+  const cardId = await getOneBingoCard(getBaseAppUrl());
+  const cardUrl = getUrlForCard(cardId);
+
+  await page.goto(cardUrl);
+
+  const points = [...Array(5).keys()].map((e) => e + 1).map((c) => [0, c]);
+
+  for (const [r, c] of points) {
+    await page.click(
+      `#app-root .content .card .number-container.is-header[data-row="${r}"][data-column="${c}"]`
+    );
+  }
+
+  const numberCrosses = await page.$$(
+    '#app-root .content .card .number-container:not(.is-header) .number-cross.visible'
+  );
+
+  t.is(numberCrosses.length, 0);
+});
