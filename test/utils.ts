@@ -116,3 +116,7 @@ export function getBingoCardPoints() {
     .map((e) => e + 1)
     .flatMap((c) => [...Array(5).keys()].map((r) => r + 1).map((r) => [r, c]));
 }
+
+export function getBingoHeaderPoints() {
+  return [...Array(5).keys()].map((e) => e + 1).map((c) => [0, c]);
+}
