@@ -5,5 +5,5 @@ module.exports = Object.assign({}, baseConfig, {
   concurrency: 1,
   failFast: true,
   failWithoutAssertions: true,
-  timeout: '15s',
+  timeout: '30s',
 });
