@@ -7,6 +7,7 @@ import {
   getBaseAppUrl,
   getUrlForCard,
   getBingoCardPoints,
+  getBingoHeaderPoints,
 } from './utils';
 
 test.before(async () => {
@@ -86,7 +87,7 @@ test('clicking on the bingo header does nothing', withPage, async (t, page) => {
 
   await page.goto(cardUrl);
 
-  const points = [...Array(5).keys()].map((e) => e + 1).map((c) => [0, c]);
+  const points = getBingoHeaderPoints();
 
   for (const [r, c] of points) {
     await page.click(
