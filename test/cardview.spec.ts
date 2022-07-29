@@ -6,6 +6,7 @@ import {
   getOneBingoCard,
   getBaseAppUrl,
   getUrlForCard,
+  getBingoCardPoints,
 } from './utils';
 
 test.before(async () => {
@@ -63,11 +64,7 @@ test(
 
     await page.goto(cardUrl);
 
-    const points = [...Array(5).keys()]
-      .map((e) => e + 1)
-      .flatMap((c) =>
-        [...Array(5).keys()].map((r) => r + 1).map((r) => [r, c])
-      );
+    const points = getBingoCardPoints();
 
     for (const [r, c] of points) {
       await page.click(
