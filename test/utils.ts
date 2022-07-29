@@ -110,3 +110,9 @@ export function getBaseAppUrl() {
 export function getUrlForCard(cardId: string) {
   return `${getBaseAppUrl()}/?card=${cardId}`;
 }
+
+export function getBingoCardPoints() {
+  return [...Array(5).keys()]
+    .map((e) => e + 1)
+    .flatMap((c) => [...Array(5).keys()].map((r) => r + 1).map((r) => [r, c]));
+}
