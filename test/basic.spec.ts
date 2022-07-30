@@ -21,6 +21,20 @@ test('something shows up on the page', withPage, async (t, page) => {
 });
 
 test(
+  'a header and a footer shows up on the page',
+  withPage,
+  async (t, page) => {
+    await page.goto(getBaseAppUrl());
+
+    const header = await page.$('#app-root .bingo-header .title');
+    const footer = await page.$('#app-root .footer p');
+
+    t.truthy(header);
+    t.truthy(footer);
+  }
+);
+
+test(
   'we see the generate view when there is no card query param',
   withPage,
   async (t, page) => {
