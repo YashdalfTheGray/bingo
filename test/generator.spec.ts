@@ -102,6 +102,11 @@ test(
     await page.click('#app-root #generate-button');
     const cardsGenerated = await page.$$('#app-root .card-detail-row');
 
+    const inputShowingValidationError = await page.$(
+      '#app-root #card-number-input.validation-error'
+    );
+
     t.is(cardsGenerated.length, 0);
+    t.truthy(inputShowingValidationError);
   }
 );
