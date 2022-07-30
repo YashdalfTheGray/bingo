@@ -90,3 +90,18 @@ test(
     t.truthy(doneIcon);
   }
 );
+
+test(
+  'the generator does nothing if the input is invalid',
+  withPage,
+  async (t, page) => {
+    await page.goto(getBaseAppUrl());
+
+    await page.$('#app-root .bingo-header .title');
+
+    await page.click('#app-root #generate-button');
+    const cardsGenerated = await page.$$('#app-root .card-detail-row');
+
+    t.is(cardsGenerated.length, 0);
+  }
+);
