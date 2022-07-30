@@ -101,3 +101,18 @@ test('clicking on the bingo header does nothing', withPage, async (t, page) => {
 
   t.is(numberCrosses.length, 0);
 });
+
+test('an error is shown if the link is bad', withPage, async (t, page) => {
+  const cardId = await getOneBingoCard(getBaseAppUrl());
+  // intentionally add something to the link
+  const cardUrl = `${getUrlForCard(cardId)}f`;
+
+  await page.goto(cardUrl);
+  await page.waitForSelector('#app-root .bingo-header .title');
+
+  const content = await page.$('#app-root .content div');
+  const message = await content!.evaluate((e) => e.textContent);
+
+  t.not(message!.length, 0);
+  t.true(/invalid/i.test(message!));
+});
