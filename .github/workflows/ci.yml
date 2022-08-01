@@ -9,6 +9,11 @@ on:
       - 'docs'
       - 'docs/**'
       - 'ava.**'
+      - '.env*'
+      - '.nvmrc'
+      - 'tslint.json'
+      - 'test'
+      - 'test/**'
 
 name: Deploy to Amazon ECS
 
