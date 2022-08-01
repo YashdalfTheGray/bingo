@@ -6,6 +6,9 @@ on:
       - 'README.md'
       - 'LICENSE'
       - '.prettierrc'
+      - 'docs'
+      - 'docs/**'
+      - 'ava.**'
 
 name: Deploy to Amazon ECS
 
