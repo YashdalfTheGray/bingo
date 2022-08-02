@@ -76,7 +76,11 @@ export default class Card extends Component<ICardProps> {
         </div>
       `;
     } catch (err) {
-      return '<div>Invalid card numbers! Please check the link.</div>';
+      return `
+        <div class="card invalid-card">
+          Invalid card numbers! Please check the link.
+        </div>
+      `;
     }
   }
 }
