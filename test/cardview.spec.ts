@@ -110,7 +110,7 @@ test('an error is shown if the link is bad', withPage, async (t, page) => {
   await page.goto(cardUrl);
   await page.waitForSelector('#app-root .bingo-header .title');
 
-  const content = await page.$('#app-root .content div');
+  const content = await page.$('#app-root .content .card.invalid-card');
   const message = await content!.evaluate((e) => e.textContent);
 
   t.not(message!.length, 0);
