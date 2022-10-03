@@ -106,7 +106,7 @@
     "babel-loader": "~8.2.5",
     "clean-webpack-plugin": "~4.0.0-alpha.0",
     "concurrently": "~7.3.0",
-    "core-js": "~3.24.1",
+    "core-js": "~3.25.4",
     "css-loader": "~6.7.1",
     "cssnano": "~5.1.13",
     "dotenv": "~16.0.0",
