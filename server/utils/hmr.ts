@@ -59,5 +59,9 @@ function getWebpackConfig<F = WebpackConfigFunction>(
   if (typeof configOrFunction === 'function') {
     return configOrFunction.call(null, ...args);
   }
-  return configOrFunction;
+  // NOTE @yashdalfthegray 2022/10/24
+  // This is sort of a hack, these types should figure themselves out
+  // but for some reason they don't with the upgrades in typescript
+  // so that needs to be figured out.
+  return configOrFunction as webpack.Configuration;
 }
