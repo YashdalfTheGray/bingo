@@ -39,7 +39,11 @@ export function validate<F extends (...args: any[]) => any>(
   return fn(...args);
 }
 
-export function assert<T>(condition: boolean, argName: string, value: T) {
+export function assert<T extends Stringable>(
+  condition: boolean,
+  argName: string,
+  value: T
+) {
   if (!condition) {
     throw new ValidationError(argName, value);
   }
