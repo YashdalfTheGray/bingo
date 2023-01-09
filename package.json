@@ -110,7 +110,7 @@
     "css-loader": "~6.7.1",
     "cssnano": "~5.1.14",
     "dotenv": "~16.0.0",
-    "husky": "~8.0.1",
+    "husky": "~8.0.3",
     "lint-staged": "~13.1.0",
     "mini-css-extract-plugin": "~2.7.2",
     "nyc": "~15.1.0",
