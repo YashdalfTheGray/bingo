@@ -116,7 +116,7 @@
     "nyc": "~15.1.0",
     "postcss": "~8.4.21",
     "postcss-loader": "~7.0.1",
-    "prettier": "~2.8.1",
+    "prettier": "~2.8.2",
     "puppeteer": "~19.4.1",
     "regenerator-runtime": "~0.13.9",
     "sass": "~1.57.1",
