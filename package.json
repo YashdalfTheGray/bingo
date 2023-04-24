@@ -108,7 +108,7 @@
     "concurrently": "~8.0.1",
     "core-js": "~3.29.0",
     "css-loader": "~6.7.1",
-    "cssnano": "~5.1.15",
+    "cssnano": "~6.0.0",
     "dotenv": "~16.0.0",
     "husky": "~8.0.3",
     "lint-staged": "~13.2.0",
