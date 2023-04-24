@@ -114,7 +114,7 @@
     "lint-staged": "~13.2.0",
     "mini-css-extract-plugin": "~2.7.2",
     "nyc": "~15.1.0",
-    "postcss": "~8.4.21",
+    "postcss": "~8.4.23",
     "postcss-loader": "~7.2.4",
     "prettier": "~2.8.7",
     "puppeteer": "~19.8.0",
