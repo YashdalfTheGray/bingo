@@ -115,7 +115,7 @@
     "mini-css-extract-plugin": "~2.7.6",
     "nyc": "~15.1.0",
     "postcss": "~8.4.23",
-    "postcss-loader": "~7.2.4",
+    "postcss-loader": "~7.3.0",
     "prettier": "~2.8.7",
     "puppeteer": "~19.8.0",
     "regenerator-runtime": "~0.13.9",
