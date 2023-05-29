@@ -117,7 +117,7 @@
     "postcss": "~8.4.23",
     "postcss-loader": "~7.3.0",
     "prettier": "~2.8.7",
-    "puppeteer": "~19.8.0",
+    "puppeteer": "~20.4.0",
     "regenerator-runtime": "~0.13.9",
     "sass": "~1.62.1",
     "sass-loader": "~13.2.2",
