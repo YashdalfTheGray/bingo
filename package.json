@@ -120,7 +120,7 @@
     "puppeteer": "~20.4.0",
     "regenerator-runtime": "~0.13.9",
     "sass": "~1.62.1",
-    "sass-loader": "~13.2.2",
+    "sass-loader": "~13.3.1",
     "svg-inline-loader": "~0.8.2",
     "ts-loader": "~9.4.1",
     "ts-node": "~10.9.1",
