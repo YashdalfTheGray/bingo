@@ -111,7 +111,7 @@
     "cssnano": "~6.0.1",
     "dotenv": "~16.0.0",
     "husky": "~8.0.3",
-    "lint-staged": "~13.2.2",
+    "lint-staged": "~13.2.3",
     "mini-css-extract-plugin": "~2.7.6",
     "nyc": "~15.1.0",
     "postcss": "~8.4.24",
