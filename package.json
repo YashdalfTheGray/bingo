@@ -132,5 +132,10 @@
     "webpack-cli": "~5.1.4",
     "webpack-dev-middleware": "~6.1.1",
     "webpack-hot-middleware": "~2.25.4"
+  },
+  "overrides": {
+    "tslint-plugin-prettier": {
+      "prettier": "$prettier"
+    }
   }
 }
