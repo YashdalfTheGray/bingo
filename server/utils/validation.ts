@@ -8,9 +8,12 @@ interface Stringable {
 }
 
 export class ValidationError<T extends Stringable> extends Error {
-  constructor(private argName: string, private val: T) {
+  constructor(
+    private argName: string,
+    private val: T,
+  ) {
     super(
-      `Parameter named ${argName} with value ${val.toString()} failed validation.`
+      `Parameter named ${argName} with value ${val.toString()} failed validation.`,
     );
   }
 
@@ -39,7 +42,11 @@ export function validate<F extends (...args: any[]) => any>(
   return fn(...args);
 }
 
-export function assert<T>(condition: boolean, argName: string, value: T) {
+export function assert<T extends Stringable>(
+  condition: boolean,
+  argName: string,
+  value: T,
+) {
   if (!condition) {
     throw new ValidationError(argName, value);
   }

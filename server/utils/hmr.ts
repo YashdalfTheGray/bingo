@@ -3,7 +3,7 @@ import express from 'express';
 
 type WebpackConfigFunction = (
   env: any,
-  args: webpack.Configuration
+  args: webpack.Configuration,
 ) => webpack.Configuration;
 
 type WebpackModeType = 'none' | 'development' | 'production';
@@ -23,7 +23,7 @@ type WebpackConfigAndCompiler = {
  */
 export default function hotModuleReloadingSetup(
   app: express.Application,
-  configFilePath: string = '../../webpack.config.js'
+  configFilePath: string = '../../webpack.config.js',
 ): WebpackConfigAndCompiler {
   const mode: WebpackModeType = process.env.NODE_ENV as WebpackModeType;
   const config = getWebpackConfig(configFilePath, null, { mode });
@@ -32,7 +32,7 @@ export default function hotModuleReloadingSetup(
   app.use(
     require('webpack-dev-middleware')(compiler, {
       publicPath: config.output!.publicPath,
-    })
+    }),
   );
   app.use(require('webpack-hot-middleware')(compiler));
 
@@ -59,5 +59,9 @@ function getWebpackConfig<F = WebpackConfigFunction>(
   if (typeof configOrFunction === 'function') {
     return configOrFunction.call(null, ...args);
   }
-  return configOrFunction;
+  // NOTE @yashdalfthegray 2022/10/24
+  // This is sort of a hack, these types should figure themselves out
+  // but for some reason they don't with the upgrades in typescript
+  // so that needs to be figured out.
+  return configOrFunction as webpack.Configuration;
 }
