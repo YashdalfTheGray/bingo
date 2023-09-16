@@ -8,7 +8,7 @@ interface IContentState {
   queryParams: { [k: string]: string };
 }
 
-export default class Content extends Component<{}, IContentState> {
+export default class Content extends Component<object, IContentState> {
   constructor() {
     super('Content');
 
@@ -20,7 +20,7 @@ export default class Content extends Component<{}, IContentState> {
           ...acc,
           [key]: value,
         }),
-        {}
+        {},
       ),
     };
   }

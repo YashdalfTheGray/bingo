@@ -8,7 +8,10 @@ export interface IDocumentWithRegistry extends Document {
 (document as IDocumentWithRegistry).componentRegistry = {};
 (document as IDocumentWithRegistry).nextId = 0;
 
-export default class Component<P extends {} = {}, S extends {} = {}> {
+export default class Component<
+  P extends object = object,
+  S extends object = object,
+> {
   protected readonly id: string;
   protected readonly props: P;
   protected state: S;

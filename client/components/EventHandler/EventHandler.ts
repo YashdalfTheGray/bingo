@@ -13,13 +13,13 @@ export default class EventHandler {
   public setup() {
     this.root.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).id === 'generate-button') {
-        (
+        void (
           (document as IDocumentWithRegistry).componentRegistry
             .Generator4 as Generator
         ).generateCards();
       } else if (isTargetAnIconButton(e.target)) {
         const dataset = e.target.dataset;
-        (
+        void (
           (document as IDocumentWithRegistry).componentRegistry[
             dataset.rowId!
           ] as CardDetailRow
@@ -32,7 +32,7 @@ export default class EventHandler {
           ] as Card
         ).handleNumberClick(
           parseInt(dataset.row!, 10),
-          parseInt(dataset.column!, 10)
+          parseInt(dataset.column!, 10),
         );
       }
     });

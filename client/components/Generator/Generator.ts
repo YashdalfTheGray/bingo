@@ -10,7 +10,7 @@ interface IGeneratorState {
   cards: IBingoCard[];
 }
 
-export default class Generator extends Component<{}, IGeneratorState> {
+export default class Generator extends Component<object, IGeneratorState> {
   constructor() {
     super('Generator');
 
@@ -51,7 +51,7 @@ export default class Generator extends Component<{}, IGeneratorState> {
             hash: card.split('-')[0],
             content: card,
           };
-        })
+        }),
     );
 
     this.setState({ cards });

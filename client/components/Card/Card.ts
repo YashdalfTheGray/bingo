@@ -22,7 +22,7 @@ export default class Card extends Component<ICardProps> {
 
     const visibleClassName = 'visible';
     const cross = document.querySelector(
-      `.number-container[data-row="${row}"][data-column="${column}"] > .number-cross`
+      `.number-container[data-row="${row}"][data-column="${column}"] > .number-cross`,
     );
 
     if (cross?.classList.contains(visibleClassName)) {
@@ -68,9 +68,9 @@ export default class Card extends Component<ICardProps> {
                             ? `<span class="number-cross">${close}</span>`
                             : ''
                         }
-                      </span>`
+                      </span>`,
                 )
-                .join('\n')
+                .join('\n'),
             )
             .join('\n')}
         </div>

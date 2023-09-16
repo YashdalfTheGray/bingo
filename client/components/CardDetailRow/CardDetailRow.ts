@@ -20,7 +20,7 @@ export default class CardDetailRow extends Component<ICardDetailRowProps> {
     const result = await tryToCopyLink(card);
     if (result) {
       const thisRow = document.querySelector(
-        `.card-detail-row[data-card-hash="${hash}"]`
+        `.card-detail-row[data-card-hash="${hash}"]`,
       );
 
       const doneMarker = thisRow?.querySelector('span.done-icon');
