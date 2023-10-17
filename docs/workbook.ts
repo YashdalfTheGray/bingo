@@ -4,7 +4,7 @@ import { writeChartFile, buildChart } from './utils';
   const minRange = 1;
   const maxRange = 10;
 
-  const results: number[] = new Array(maxRange + 1).fill(0);
+  const results: number[] = new Array<number>(maxRange + 1).fill(0);
 
   const getRandomNumber = (min: number, max: number): number => {
     return Math.round(Math.random() * (max - min) + min);
