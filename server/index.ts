@@ -16,6 +16,7 @@ import bingoRouter from './middleware/bingo';
 import hotModuleReloadingSetup from './utils/hmr';
 
 const port = process.env.PORT || process.argv[2] || 8080;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const wrap =
   (fn: RequestHandler) =>
   (...args: [Request, Response, NextFunction]) =>
@@ -46,7 +47,7 @@ app.use(
         'style-src': ["'self'", 'https:', "'unsafe-inline'"],
       },
     },
-  })
+  }),
 );
 app.use(bodyParser.json());
 app.use(morgan('common'));
@@ -66,6 +67,5 @@ apiRouter.get('/', (_, res) => {
 app.use('/api', apiRouter);
 
 app.listen(port, () =>
-  // tslint:disable-next-line
-  console.log(`Server running on port ${chalk.green(port)}`)
+  console.log(`Server running on port ${chalk.green(port)}`),
 );
