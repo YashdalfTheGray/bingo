@@ -28,4 +28,4 @@ jobs:
         run: |
           npm install
           npm test
-          npm run tslint
+          npm run eslint
