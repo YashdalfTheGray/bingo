@@ -2,8 +2,8 @@ import webpack from 'webpack';
 import express from 'express';
 
 type WebpackConfigFunction = (
-  env: any,
-  args: webpack.Configuration
+  env: unknown,
+  args: webpack.Configuration,
 ) => webpack.Configuration;
 
 type WebpackModeType = 'none' | 'development' | 'production';
@@ -23,17 +23,19 @@ type WebpackConfigAndCompiler = {
  */
 export default function hotModuleReloadingSetup(
   app: express.Application,
-  configFilePath: string = '../../webpack.config.js'
+  configFilePath: string = '../../webpack.config.js',
 ): WebpackConfigAndCompiler {
   const mode: WebpackModeType = process.env.NODE_ENV as WebpackModeType;
   const config = getWebpackConfig(configFilePath, null, { mode });
   const compiler = webpack(config);
 
   app.use(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
     require('webpack-dev-middleware')(compiler, {
       publicPath: config.output!.publicPath,
-    })
+    }),
   );
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
   app.use(require('webpack-hot-middleware')(compiler));
 
   return { config, compiler };
@@ -54,9 +56,11 @@ function getWebpackConfig<F = WebpackConfigFunction>(
   path: string,
   ...args: F extends WebpackConfigFunction ? Parameters<F> : never
 ): webpack.Configuration {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
   const configOrFunction: F = require(path);
 
   if (typeof configOrFunction === 'function') {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return configOrFunction.call(null, ...args);
   }
   // NOTE @yashdalfthegray 2022/10/24
