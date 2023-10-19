@@ -16,14 +16,14 @@ export function buildChart(data: number[]): jsdom.JSDOM {
   ].join(' ');
 
   chart.window.document.body.appendChild(
-    buildChartParent(chart, Object.keys(data).length)
+    buildChartParent(chart, Object.keys(data).length),
   );
 
   const max = data.reduce((acc, v) => (acc < v ? v : acc));
   data.forEach((val, index) =>
     chart.window.document
       .querySelector('#chart-parent')!
-      .appendChild(buildColumnWithLabel(chart, index, val, max))
+      .appendChild(buildColumnWithLabel(chart, index, val, max)),
   );
 
   chart.window.document.body.appendChild(buildRawDataSection(chart, data));
@@ -50,7 +50,7 @@ function buildColumnWithLabel(
   dom: jsdom.JSDOM,
   label: number,
   value: number,
-  max: number
+  max: number,
 ): HTMLElement {
   const column = buildColumn(dom, value, max);
 
@@ -73,7 +73,7 @@ function buildColumnWithLabel(
 function buildColumn(
   dom: jsdom.JSDOM,
   value: number,
-  max: number
+  max: number,
 ): HTMLElement {
   const outerStyles = [
     'height: 200px;',
@@ -110,10 +110,10 @@ function buildRawDataSection(dom: jsdom.JSDOM, data: number[]) {
         ...acc,
         [i]: v,
       }),
-      {}
+      {},
     ),
     null,
-    2
+    2,
   );
 
   return rawDataElement;
