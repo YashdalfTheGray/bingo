@@ -1,4 +1,4 @@
-interface ArgValidationConfig<F extends (...args: any[]) => any> {
+interface ArgValidationConfig<F extends (...args: unknown[]) => unknown> {
   argName: string;
   validator: (value: Parameters<F>) => boolean;
 }
@@ -8,9 +8,12 @@ interface Stringable {
 }
 
 export class ValidationError<T extends Stringable> extends Error {
-  constructor(private argName: string, private val: T) {
+  constructor(
+    private argName: string,
+    private val: T,
+  ) {
     super(
-      `Parameter named ${argName} with value ${val.toString()} failed validation.`
+      `Parameter named ${argName} with value ${val.toString()} failed validation.`,
     );
   }
 
@@ -23,7 +26,7 @@ export class ValidationError<T extends Stringable> extends Error {
   }
 }
 
-export function validate<F extends (...args: any[]) => any>(
+export function validate<F extends (...args: any[]) => ReturnType<F>>(
   fn: F,
   validationConfig: ArgValidationConfig<F>[],
   ...args: Parameters<F>
@@ -33,7 +36,7 @@ export function validate<F extends (...args: any[]) => any>(
   }
   validationConfig.forEach((config, i) => {
     if (!config.validator(args)) {
-      throw new ValidationError(config.argName, args[i]);
+      throw new ValidationError(config.argName, args[i] as Stringable);
     }
   });
   return fn(...args);
@@ -42,7 +45,7 @@ export function validate<F extends (...args: any[]) => any>(
 export function assert<T extends Stringable>(
   condition: boolean,
   argName: string,
-  value: T
+  value: T,
 ) {
   if (!condition) {
     throw new ValidationError(argName, value);

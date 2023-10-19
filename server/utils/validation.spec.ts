@@ -18,6 +18,7 @@ test('ValidationError has a property for arg name and value', (t) => {
 
 test('ValidationError properties are read only', (t) => {
   const err = new validation.ValidationError('test', 2);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
   const thrownErr = t.throws(() => ((err as any).argumentName = 'test'));
   t.assert(thrownErr instanceof TypeError);
 });
@@ -28,10 +29,10 @@ test('validate runs arg validators and then calls the function', (t) => {
     f,
     [
       { argName: 'a', validator: ([a, b]) => a > b },
-      { argName: 'b', validator: ([a, b]) => b !== 0 },
+      { argName: 'b', validator: ([_a, b]) => b !== 0 },
     ],
     15,
-    5
+    5,
   );
   t.is(result, 3);
 });

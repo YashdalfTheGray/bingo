@@ -4,7 +4,7 @@ import { encodeColumns, hashColumns } from '../../common/cardUtils';
 
 import { generateSingleColumn } from '../utils/generator';
 
-enum ColumnName {
+enum _ColumnName {
   B = 1,
   I,
   N,
