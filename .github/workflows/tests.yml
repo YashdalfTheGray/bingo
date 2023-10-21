@@ -27,5 +27,8 @@ jobs:
         id: test-and-lint
         run: |
           npm install
+          cd docs
+          npm install
+          cd ..
           npm test
           npm run eslint
