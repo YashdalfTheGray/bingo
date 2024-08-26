@@ -102,7 +102,7 @@
     "@types/webpack": "~5.28.1",
     "@types/webpack-env": "~1.18.1",
     "@typescript-eslint/eslint-plugin": "~6.7.0",
-    "@typescript-eslint/parser": "~6.7.0",
+    "@typescript-eslint/parser": "~8.2.0",
     "autoprefixer": "~10.4.14",
     "ava": "~5.3.1",
     "babel-loader": "~9.1.2",
