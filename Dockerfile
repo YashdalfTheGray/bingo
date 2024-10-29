@@ -16,7 +16,7 @@ RUN node --version && npm --version && ./node_modules/.bin/tsc --version
 
 # Bundle app source
 COPY . /usr/src/app
-RUN npm test && npm run tslint
+RUN npm test && npm run eslint
 RUN npm run assets:prod && npm run server:prod
 
 EXPOSE 8080
