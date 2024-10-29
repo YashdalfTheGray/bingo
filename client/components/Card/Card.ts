@@ -75,7 +75,7 @@ export default class Card extends Component<ICardProps> {
             .join('\n')}
         </div>
       `;
-    } catch (err) {
+    } catch (_err) {
       return `
         <div class="card invalid-card">
           Invalid card numbers! Please check the link.

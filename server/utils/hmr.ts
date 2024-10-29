@@ -30,12 +30,12 @@ export default function hotModuleReloadingSetup(
   const compiler = webpack(config);
 
   app.use(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     require('webpack-dev-middleware')(compiler, {
       publicPath: config.output!.publicPath,
     }),
   );
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   app.use(require('webpack-hot-middleware')(compiler));
 
   return { config, compiler };
@@ -56,7 +56,7 @@ function getWebpackConfig<F = WebpackConfigFunction>(
   path: string,
   ...args: F extends WebpackConfigFunction ? Parameters<F> : never
 ): webpack.Configuration {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
   const configOrFunction: F = require(path);
 
   if (typeof configOrFunction === 'function') {

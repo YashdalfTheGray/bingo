@@ -132,14 +132,12 @@ export default [
 
       parserOptions: {
         project: true,
-        tsconfigRootDir: '/home/yash/git-yash/bingo',
       },
     },
 
     rules: {
       '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/no-base-to-string': 'off',
-
       '@typescript-eslint/no-floating-promises': [
         'error',
         {
@@ -147,19 +145,28 @@ export default [
           ignoreIIFE: true,
         },
       ],
-
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
-          varsIgnorePattern: '^_',
+          args: 'all',
           argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
         },
       ],
-
       '@typescript-eslint/no-explicit-any': [
         'error',
         {
           ignoreRestArgs: true,
+        },
+      ],
+      '@typescript-eslint/no-require-imports': [
+        'error',
+        {
+          allow: ['webpack-dev-middleware', 'webpack-hot-middleware'],
         },
       ],
     },
