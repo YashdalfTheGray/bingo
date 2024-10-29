@@ -2,24 +2,26 @@
   "family": "bingo",
   "containerDefinitions": [
     {
-      "name": "website",
+      "name": "app",
       "essential": true,
       "portMappings": [
         {
           "containerPort": 8080,
-          "hostPort": 80
+          "hostPort": 8080
         }
       ],
       "logConfiguration": {
-        "logDriver": "awslogs",
+        "logDriver": "json-file",
         "options": {
-          "awslogs-group": "/ecs/bingo",
-          "awslogs-region": "us-east-2",
-          "awslogs-stream-prefix": "ecs"
+          "max-size": "25m",
+          "compress": "true",
+          "max-file": "10"
         }
       }
     }
   ],
+  "networkMode": "bridge",
   "memory": "512",
-  "cpu": "512"
+  "cpu": "512",
+  "requiresCompatibilities": ["EXTERNAL"]
 }
