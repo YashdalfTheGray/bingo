@@ -60,7 +60,7 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Update the service with the new task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v2.1.1
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2.2.0
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: bingo-service
