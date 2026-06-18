@@ -94,7 +94,7 @@
     "xxhashjs": "~0.2.2"
   },
   "devDependencies": {
-    "@babel/core": "~7.23.2",
+    "@babel/core": "~7.29.6",
     "@babel/plugin-transform-class-properties": "~7.25.9",
     "@babel/plugin-transform-object-rest-spread": "~7.22.15",
     "@babel/preset-env": "~7.23.2",
