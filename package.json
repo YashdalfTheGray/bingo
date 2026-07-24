@@ -120,7 +120,7 @@
     "husky": "~8.0.3",
     "lint-staged": "~17.0.7",
     "mini-css-extract-plugin": "~2.7.6",
-    "nyc": "~15.1.0",
+    "nyc": "~18.0.0",
     "postcss": "~8.5.14",
     "postcss-loader": "~7.3.4",
     "prettier": "~3.0.3",
